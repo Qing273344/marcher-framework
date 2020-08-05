@@ -12,6 +12,7 @@
 
     <modules>
         <module>marcher-framework-util</module>
+        <module>marcher-framework-swagger</module>
     </modules>
 
 
