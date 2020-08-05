@@ -13,6 +13,7 @@
     <modules>
         <module>marcher-framework-util</module>
         <module>marcher-framework-swagger</module>
+        <module>marcher-framework-generator</module>
     </modules>
 
 

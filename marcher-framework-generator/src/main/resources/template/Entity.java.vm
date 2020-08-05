@@ -1,0 +1,42 @@
+package ${package}.${moduleName}.model;
+
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
+
+#if(${hasBigDecimal})
+import java.math.BigDecimal;
+#end
+import com.soushi88.framework.mybatis.dao.DeletableDO;
+import lombok.*;
+import lombok.experimental.Accessors;
+
+/**
+ * ${comments}
+ * 
+ * @author ${author}
+ * @date ${datetime}
+ */
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@Accessors(chain = true)
+@EqualsAndHashCode(callSuper = true)
+@TableName("${tableName}")
+public class ${className} extends DeletableDO {
+#foreach ($column in $columns)
+	#if($column.attrname == "createTime" || $column.attrname == "modifyTime" || $column.attrname == "deleted")
+	#else
+
+	/**
+	 * $column.comments
+	 */
+	#if($column.columnName == $pk.columnName)
+@TableId(type = IdType.AUTO)
+	#end
+private $column.attrType $column.attrname;
+	#end
+#end
+
+}
