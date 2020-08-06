@@ -3,6 +3,8 @@
 
 ### marcher-framework-excel
 excel
+- 校验(未)
+- 读取时注解获取指定位置的值(未)
 
 ## marcher-framework-util
 工具类
