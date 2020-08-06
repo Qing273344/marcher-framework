@@ -1,13 +1,16 @@
 ## marcher-framework
 项目扩展
 
+### marcher-framework-excel
+excel
+
 ## marcher-framework-util
 工具类
 
-## marcher-framework-generator
+### marcher-framework-generator
 代码生成
 
-## marcher-framework-swagger
+### marcher-framework-swagger
 文档
 
 ## marcher-framework-sharding(未)
@@ -31,5 +34,3 @@ MVC
 ## marcher-framework-mq(未)
 MQ
 
-## marcher-framework-excel(未)
-excel

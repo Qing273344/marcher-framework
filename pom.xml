@@ -14,6 +14,7 @@
         <module>marcher-framework-util</module>
         <module>marcher-framework-swagger</module>
         <module>marcher-framework-generator</module>
+        <module>marcher-framework-excel</module>
     </modules>
 
 

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>marcher-framework</artifactId>
+        <groupId>xin.marcher</groupId>
+        <version>1.0.0</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>marcher-framework-excel</artifactId>
+
+
+    <properties>
+        <soushi.framework.util>1.0.4</soushi.framework.util>
+        <easyexcel.version>2.2.3</easyexcel.version>
+    </properties>
+
+
+    <dependencies>
+        <dependency>
+            <groupId>com.soushi88</groupId>
+            <artifactId>soushi-framework-util</artifactId>
+            <version>${soushi.framework.util}</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- alibaba easyexcel -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>easyexcel</artifactId>
+            <version>${easyexcel.version}</version>
+        </dependency>
+    </dependencies>
+</project>
