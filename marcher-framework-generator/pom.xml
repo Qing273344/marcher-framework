@@ -28,14 +28,14 @@
         <mssql.version>4.0</mssql.version>
         <oracle.version>11.2.0.3</oracle.version>
 
-        <soushi.framework.util>1.0.0</soushi.framework.util>
+        <marcher.framework.util>1.0.0</marcher.framework.util>
     </properties>
 
     <dependencies>
         <dependency>
-            <groupId>com.soushi88</groupId>
-            <artifactId>soushi-framework-util</artifactId>
-            <version>${soushi.framework.util}</version>
+            <groupId>xin.marcher</groupId>
+            <artifactId>marcher-framework-util</artifactId>
+            <version>${marcher.framework.util}</version>
         </dependency>
 
         <dependency>

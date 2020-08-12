@@ -9,8 +9,11 @@ excel
 ## marcher-framework-util
 工具类
 
-### marcher-framework-generator
+## marcher-framework-generator
 代码生成
+
+## marcher-framework-mq
+MQ
 
 ### marcher-framework-swagger
 文档
@@ -33,6 +36,5 @@ mybatis
 ## marcher-framework-mvc(未)
 MVC
 
-## marcher-framework-mq(未)
-MQ
+
 
