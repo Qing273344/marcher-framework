@@ -7,7 +7,7 @@ import com.baomidou.mybatisplus.annotation.TableName;
 #if(${hasBigDecimal})
 import java.math.BigDecimal;
 #end
-import com.soushi88.framework.mybatis.dao.DeletableDO;
+import xin.marcher.framework.mybatis.dao.DeletableDO;
 import lombok.*;
 import lombok.experimental.Accessors;
 

@@ -47,7 +47,6 @@ public class SwaggerConfig {
                 .apiInfo(apiInfo(properties))
                 .select()
                 // 自行修改为自己的包路径
-//                .apis(RequestHandlerSelectors.basePackage("com.soushi88"))
                 .apis(RequestHandlerSelectors.withMethodAnnotation(ApiOperation.class))
                 .paths(PathSelectors.any())
                 .build();

@@ -26,5 +26,5 @@ public class GlobalConstant {
     public static final String CHAR_UNDER_LINE = "_";
     public static final String CHAR_CENTRE_LINE = "-";
 
-    public static final String COOKIE_DOMAIN = ".soushi88.com";
+    public static final String COOKIE_DOMAIN = ".marcher.xin";
 }

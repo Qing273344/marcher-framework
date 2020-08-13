@@ -1,6 +1,6 @@
 package ${package}.${moduleName}.service;
 
-import com.soushi88.framework.mybatis.service.BaseService;
+import xin.marcher.framework.mybatis.service.BaseService;
 import ${package}.${moduleName}.model.${className};
 
 /**
