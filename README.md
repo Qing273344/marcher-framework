@@ -1,7 +1,7 @@
 ## marcher-framework
 项目扩展
 
-### marcher-framework-excel
+## marcher-framework-excel
 excel
 - 校验(未)
 - 读取时注解获取指定位置的值(未)
@@ -21,8 +21,11 @@ mybatis
 ## marcher-framework-oss
 OSS
 
-### marcher-framework-swagger
+## marcher-framework-swagger
 文档
+
+## marcher-framework-redis
+redis
 
 ## marcher-framework-util
 工具类
@@ -32,8 +35,4 @@ OSS
 
 ## marcher-framework-security(未)
 鉴权
-
-## marcher-framework-redis(未)
-redis
-
 

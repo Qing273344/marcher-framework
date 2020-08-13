@@ -19,6 +19,7 @@
         <module>marcher-framework-mvc</module>
         <module>marcher-framework-mybatis</module>
         <module>marcher-framework-oss</module>
+        <module>marcher-framework-redis</module>
     </modules>
 
 
