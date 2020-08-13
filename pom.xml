@@ -18,6 +18,7 @@
         <module>marcher-framework-mq</module>
         <module>marcher-framework-mvc</module>
         <module>marcher-framework-mybatis</module>
+        <module>marcher-framework-oss</module>
     </modules>
 
 

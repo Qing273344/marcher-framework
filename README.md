@@ -18,6 +18,9 @@ MVC
 ## marcher-framework-mybatis
 mybatis
 
+## marcher-framework-oss
+OSS
+
 ### marcher-framework-swagger
 文档
 
@@ -32,13 +35,5 @@ mybatis
 
 ## marcher-framework-redis(未)
 redis
-
-## marcher-framework-oss(未)
-OSS
-
-
-
-
-
 
 
