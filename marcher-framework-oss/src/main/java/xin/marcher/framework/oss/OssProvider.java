@@ -1,8 +1,7 @@
-package xin.marcher.framework.oss.manager;
+package xin.marcher.framework.oss;
 
 import com.aliyun.oss.OSSClient;
 import com.aliyun.oss.model.*;
-import xin.marcher.framework.oss.OssEndPointTypeEnum;
 import xin.marcher.framework.oss.property.OssProperties;
 import xin.marcher.framework.util.EmptyUtil;
 import xin.marcher.framework.util.UrlPathUtil;
@@ -21,41 +20,41 @@ import java.util.concurrent.ConcurrentHashMap;
  *
  * @author marcher
  */
-public class OssManager {
+public class OssProvider {
 
-    private static final Map<Integer, OssManager> ossManagerMap = new ConcurrentHashMap<>();
+    private static final Map<Integer, OssProvider> ossManagerMap = new ConcurrentHashMap<>();
     private static final Map<Integer, OSSClient> ossClientMap = new ConcurrentHashMap<>();
     private OSSClient client;
 
     private OssProperties config;
     private boolean hasExternal;
 
-    private OssManager(OssProperties config, Boolean isExternal) {
+    private OssProvider(OssProperties config, Boolean isExternal) {
         this.config = config;
         this.hasExternal = isExternal;
         // 网络环境转换
         convertEnvironment();
     }
 
-    public synchronized static OssManager getInstance(OssProperties config, final boolean isExternal) {
+    public synchronized static OssProvider getInstance(OssProperties config, final boolean isExternal) {
         // 网络环境
         Integer endPointType = isExternal ? OssEndPointTypeEnum.END_POINT_EXTERNAL.getRealCode() : OssEndPointTypeEnum.END_POINT_INTERNAL.getRealCode();
-        OssManager ossManager = ossManagerMap.get(endPointType);
-        if (null != ossManager && null != ossManager.getClient()) {
-            return ossManager;
+        OssProvider ossProvider = ossManagerMap.get(endPointType);
+        if (null != ossProvider && null != ossProvider.getClient()) {
+            return ossProvider;
         }
 
-        if (EmptyUtil.isEmpty(ossManager)) {
-            ossManager = new OssManager(config, isExternal);
+        if (EmptyUtil.isEmpty(ossProvider)) {
+            ossProvider = new OssProvider(config, isExternal);
         }
         // oss不为空, 内部的client为空
         else {
-            if (EmptyUtil.isEmpty(ossManager.getClient())) {
-                ossManager = new OssManager(config, isExternal);
+            if (EmptyUtil.isEmpty(ossProvider.getClient())) {
+                ossProvider = new OssProvider(config, isExternal);
             }
         }
-        ossManagerMap.put(endPointType, ossManager);
-        return ossManager;
+        ossManagerMap.put(endPointType, ossProvider);
+        return ossProvider;
     }
 
     private void convertEnvironment() {
@@ -87,7 +86,7 @@ public class OssManager {
         ossClientMap.put(endPointType, client);
     }
 
-    private Integer getEndPoint(Boolean isExternal) {
+    private Integer getEndPoint(final boolean isExternal) {
         return isExternal ? OssEndPointTypeEnum.END_POINT_EXTERNAL.getRealCode() : OssEndPointTypeEnum.END_POINT_INTERNAL.getRealCode();
     }
 

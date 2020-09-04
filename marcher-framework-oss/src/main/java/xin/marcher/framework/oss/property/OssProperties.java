@@ -3,6 +3,7 @@ package xin.marcher.framework.oss.property;
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
+import xin.marcher.framework.util.EmptyUtil;
 
 /**
  * 存储配置
@@ -41,12 +42,18 @@ public class OssProperties {
     /** 阿里云文件域名(临时) */
     protected String tempRegion;
 
-    public String getTempHost() {
-        return "http://" + tempBucketName + "." + endPoint + "/";
+    public String getHost() {
+        if (EmptyUtil.isNotEmpty(region)) {
+            return region;
+        }
+        return "http://" + bucketName + "." + endPoint + "/";
     }
 
-    public String getHost() {
-        return "http://" + bucketName + "." + endPoint + "/";
+    public String getTempHost() {
+        if (EmptyUtil.isNotEmpty(tempRegion)) {
+            return tempRegion;
+        }
+        return "http://" + tempBucketName + "." + endPoint + "/";
     }
 
     public String getCdnHost() {

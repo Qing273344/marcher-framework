@@ -1,4 +1,4 @@
-package xin.marcher.framework.z.util;
+package xin.marcher.framework.util;
 
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
@@ -50,12 +50,12 @@ public class AESUtil {
             // 获取加密内容的字节数组(这里要设置为utf-8)不然内容中如果有中文和英文混合中文就会解密为乱码
             byte[] byteContent = content.getBytes(StandardCharsets.UTF_8);
             // 根据密码器的初始化方式--加密：将数据加密
-            byte[] byteAES = cipher.doFinal(byteContent);
+            byte[] encrypt = cipher.doFinal(byteContent);
             //1 将加密后的数据转换为字符串
             //这里用Base64Encoder中会找不到包
             //解决办法：
             //在项目的Build path中先移除JRE System Library，再添加库JRE System Library，重新编译后就一切正常了。
-            encryptedData = new BASE64Encoder().encode(byteAES);
+            encryptedData = new BASE64Encoder().encode(encrypt);
         } catch (Exception e) {
             throw new RuntimeException("加密错误，错误信息：", e);
         }
@@ -111,17 +111,4 @@ public class AESUtil {
         return new SecretKeySpec(raw, ALGORITHM_AES);
     }
 
-    /**
-     * 加密解密示例
-     */
-    public static void main(String[] args) {
-        String key = "123";
-        System.out.println("key | AESEncode | AESDecode");
-
-        System.out.print(key + " | ");
-        String encryptString = encrypt("secret", key);
-        System.out.print(encryptString + " | ");
-        String decryptString = decrypt("secret", encryptString);
-        System.out.println(decryptString);
-    }
 }

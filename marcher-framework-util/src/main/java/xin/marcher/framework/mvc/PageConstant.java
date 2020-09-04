@@ -7,7 +7,7 @@ package xin.marcher.framework.mvc;
  */
 public class PageConstant {
 
-    public static final int DEFAULT_ROW = 0;
+    public static final long DEFAULT_TOTAL = 0L;
 
     /**
      * 默认起始页

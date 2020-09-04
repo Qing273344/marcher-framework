@@ -6,7 +6,7 @@ import xin.marcher.framework.mvc.PageConstant;
 import xin.marcher.framework.mvc.request.PageParam;
 
 import java.io.Serializable;
-import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -22,40 +22,49 @@ public  class PageResult<T> implements Serializable {
 
     private List<T> list;
 
-    private Integer totalRow;
-
-    private Integer totalPage;
+    private Long totalRow;
 
     private Integer pageCurrent;
 
     private Integer pageSize;
 
-    private Boolean firstPage;
-
-    private Boolean lastPage;
-
-    public PageResult() {
-        this(PageConstant.DEFAULT_ROW, new PageParam());
+    private PageResult() {
+        this(PageConstant.DEFAULT_TOTAL, new PageParam());
     }
 
-    public PageResult(Integer totalRow, Integer pageCurrent, Integer pageSize) {
+    private PageResult(Long totalRow, Integer pageCurrent, Integer pageSize) {
         this(totalRow, new PageParam(pageCurrent, pageSize));
     }
 
-    public PageResult(List<T> list, Integer totalRow, PageParam pageParam) {
-        this(totalRow, pageParam);
-        this.list = list;
+    private PageResult(Long totalRow, PageParam pageParam) {
+        this(Collections.emptyList(), totalRow, pageParam);
     }
 
-    public PageResult(Integer totalRow, PageParam pageParam) {
-        super();
-        this.list = new ArrayList<>();
-        this.pageCurrent = pageParam.getPageCurrent();
+    private PageResult(List<T> list, Long totalRow, PageParam pageParam) {
+        this.list = list;
+        this.pageCurrent = pageParam.getPageNo();
         this.pageSize = pageParam.getPageSize();
         this.totalRow = totalRow;
-        this.totalPage = (int) Math.ceil((double) this.totalRow / this.pageSize);
-        this.firstPage = this.pageCurrent == PageConstant.DEFAULT_CURRENT;
-        this.lastPage = this.pageCurrent >= this.totalPage;
+    }
+
+    public static <T> PageResult<T> rest() {
+        return rest(PageConstant.DEFAULT_TOTAL, new PageParam());
+    }
+
+    public static <T> PageResult<T> rest(Long totalRow, Integer pageCurrent, Integer pageSize) {
+        return rest(totalRow, new PageParam(pageCurrent, pageSize));
+    }
+
+    public static <T> PageResult<T> rest(Long totalRow, PageParam pageParam) {
+        return rest(Collections.emptyList(), totalRow, pageParam);
+    }
+
+    public static <T> PageResult<T> rest(List<T> list, Integer totalRow, PageParam pageParam) {
+        return rest(list, (long) totalRow, pageParam);
+    }
+
+    public static <T> PageResult<T> rest(List<T> list, Long totalRow, PageParam pageParam) {
+        return new PageResult<>(list, totalRow, pageParam);
     }
 
 }

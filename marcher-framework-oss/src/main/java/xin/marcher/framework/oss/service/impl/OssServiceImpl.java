@@ -4,7 +4,7 @@ import com.aliyun.oss.ClientException;
 import com.aliyun.oss.OSSException;
 import com.aliyun.oss.model.PutObjectResult;
 import xin.marcher.framework.exception.UtilException;
-import xin.marcher.framework.oss.manager.OssManager;
+import xin.marcher.framework.oss.OssProvider;
 import xin.marcher.framework.oss.property.OssProperties;
 import xin.marcher.framework.oss.service.OssService;
 import xin.marcher.framework.util.EmptyUtil;
@@ -21,10 +21,10 @@ import java.util.List;
  */
 public class OssServiceImpl implements OssService {
 
-    private OssManager ossManager;
+    private OssProvider ossProvider;
 
     public OssServiceImpl setOssManager(OssProperties config, boolean isExternal) {
-        this.ossManager = OssManager.getInstance(config, isExternal);
+        this.ossProvider = OssProvider.getInstance(config, isExternal);
         return this;
     }
 
@@ -39,7 +39,7 @@ public class OssServiceImpl implements OssService {
     public String putObject(String bucketName, String key, byte[] input) {
         PutObjectResult putObjectResult;
         try {
-            putObjectResult = this.ossManager.putObject(bucketName, key, input);
+            putObjectResult = this.ossProvider.putObject(bucketName, key, input);
         } catch (Exception e) {
             throw new UtilException("marcher-framework-oss aliyun sdk oss put object(byte) error!", e);
         }
@@ -71,7 +71,7 @@ public class OssServiceImpl implements OssService {
     public String putObject(String bucketName, String key, File file) {
         PutObjectResult putObjectResult;
         try {
-            putObjectResult = this.ossManager.putObject(bucketName, key, file);
+            putObjectResult = this.ossProvider.putObject(bucketName, key, file);
         } catch (Exception e) {
             throw new UtilException("marcher-framework-oss aliyun sdk oss put object(file) error!", e);
         }
@@ -100,7 +100,7 @@ public class OssServiceImpl implements OssService {
         }
 
         try {
-            this.ossManager.copyObject(srcBucketName, srcOssKey, destBucketName, destOssKey);
+            this.ossProvider.copyObject(srcBucketName, srcOssKey, destBucketName, destOssKey);
         } catch (OSSException | ClientException e) {
             throw new UtilException("marcher-framework-oss aliyun sdk oss copy object error!", e);
         }
@@ -115,12 +115,12 @@ public class OssServiceImpl implements OssService {
      */
     @Override
     public void delObject(String bucketName, String key) {
-        this.ossManager.delObject(bucketName, key);
+        this.ossProvider.delObject(bucketName, key);
     }
 
     @Override
     public void delFromUrl(String bucketName, String url) {
-        this.ossManager.delFromUrl(bucketName, url);
+        this.ossProvider.delFromUrl(bucketName, url);
     }
 
     /**
@@ -131,7 +131,7 @@ public class OssServiceImpl implements OssService {
      */
     @Override
     public List<String> delObjects(String bucketName, List<String> keys) {
-        return this.ossManager.delObjects(bucketName, keys);
+        return this.ossProvider.delObjects(bucketName, keys);
     }
 
     /**
@@ -144,6 +144,6 @@ public class OssServiceImpl implements OssService {
      */
     @Override
     public List<String> listObjects(String bucketName, String keyPrefix) {
-        return this.ossManager.listObjects(bucketName, keyPrefix);
+        return this.ossProvider.listObjects(bucketName, keyPrefix);
     }
 }

@@ -15,6 +15,16 @@ import java.util.stream.Collectors;
  */
 public class ListUtil {
 
+    public static <T> List<T> empty() {
+        return new ArrayList<>();
+    }
+
+    public static <T> List<T> singleton(T element) {
+        List<T> list = new ArrayList<>();
+        list.add(element);
+        return list;
+    }
+
     public static <T> String list2Str(List<T> list, String delimiter) {
         return Joiner.on(delimiter).join(list);
     }

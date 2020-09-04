@@ -35,7 +35,7 @@ public final class ServiceException extends RuntimeException {
 
 	private static final long serialVersionUID = 1L;
 	
-    private int code = 400;
+    private int code = 500;
 
 	public ServiceException() {
 	}

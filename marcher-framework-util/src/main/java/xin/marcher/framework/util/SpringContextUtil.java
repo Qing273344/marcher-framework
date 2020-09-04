@@ -63,7 +63,7 @@ public class SpringContextUtil implements ApplicationContextAware {
 		String[] activeProfiles = applicationContext.getEnvironment().getActiveProfiles();
 		if (activeProfiles.length > 0) {
 			for (String profile : activeProfiles) {
-				if (profiles.DEV.getProfile().equals(profile)) {
+				if (EnvironmentEnum.DEV.getProfile().equals(profile)) {
 					return true;
 				}
 			}
@@ -76,7 +76,7 @@ public class SpringContextUtil implements ApplicationContextAware {
 		String[] activeProfiles = applicationContext.getEnvironment().getActiveProfiles();
 		if (activeProfiles.length > 0) {
 			for (String profile : activeProfiles) {
-				if (profiles.LOCAL.getProfile().equals(profile)) {
+				if (EnvironmentEnum.LOCAL.getProfile().equals(profile)) {
 					return true;
 				}
 			}
@@ -89,7 +89,7 @@ public class SpringContextUtil implements ApplicationContextAware {
 		String[] activeProfiles = applicationContext.getEnvironment().getActiveProfiles();
 		if (activeProfiles.length > 0) {
 			for (String profile : activeProfiles) {
-				if (profiles.TEST.getProfile().equals(profile)) {
+				if (EnvironmentEnum.TEST.getProfile().equals(profile)) {
 					return true;
 				}
 			}
@@ -98,11 +98,11 @@ public class SpringContextUtil implements ApplicationContextAware {
 		return false;
 	}
 
-	public static boolean isProProfile() {
+	public static boolean isProdProfile() {
 		String[] activeProfiles = applicationContext.getEnvironment().getActiveProfiles();
 		if (activeProfiles.length > 0) {
 			for (String profile : activeProfiles) {
-				if (profiles.PRO.getProfile().equals(profile)) {
+				if (EnvironmentEnum.PROD.getProfile().equals(profile)) {
 					return true;
 				}
 			}
@@ -115,14 +115,14 @@ public class SpringContextUtil implements ApplicationContextAware {
 		String[] activeProfiles = applicationContext.getEnvironment().getActiveProfiles();
 		if (activeProfiles.length > 0) {
 			for (String profile : activeProfiles) {
-				if (profiles.PRO.getProfile().equals(profile)) {
-					return profiles.PRO.getProfile();
+				if (EnvironmentEnum.PROD.getProfile().equals(profile)) {
+					return EnvironmentEnum.PROD.getProfile();
 				}
-				if (profiles.TEST.getProfile().equals(profile)) {
-					return profiles.TEST.getProfile();
+				if (EnvironmentEnum.TEST.getProfile().equals(profile)) {
+					return EnvironmentEnum.TEST.getProfile();
 				}
-				if (profiles.MOCK.getProfile().equals(profile)) {
-					return profiles.MOCK.getProfile();
+				if (EnvironmentEnum.MOCK.getProfile().equals(profile)) {
+					return EnvironmentEnum.MOCK.getProfile();
 				}
 			}
 		}
@@ -130,13 +130,12 @@ public class SpringContextUtil implements ApplicationContextAware {
 		return "";
 	}
 
-	public static enum profiles {
+	private static enum EnvironmentEnum {
 		/** */
 		DEV("dev"),
 		LOCAL("local"),
 		TEST("test"),
-		PRO("pro"),
-		DEFAULT("default"),
+		PROD("prod"),
 		MOCK("mock"),
 		MOBILE_PRO("mobile-pro");
 
@@ -150,7 +149,7 @@ public class SpringContextUtil implements ApplicationContextAware {
 			this.profile = profile;
 		}
 
-		profiles(String profile) {
+		EnvironmentEnum(String profile) {
 			this.profile = profile;
 		}
 	}

@@ -20,7 +20,7 @@ public interface BaseMapper<T> extends com.baomidou.mybatisplus.core.mapper.Base
      *      分页数据
      */
     default IPage<T> pageWrapper(PageParam pageParam) {
-        return new Page<>(pageParam.getPageCurrent(), pageParam.getPageSize());
+        return new Page<>(pageParam.getPageNo(), pageParam.getPageSize());
     }
 
     /**

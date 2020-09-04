@@ -17,17 +17,17 @@ import javax.validation.constraints.Min;
 public class PageParam {
 
     @Min(value = 1, message = "页码最小值为 1")
-    private Integer pageCurrent = PageConstant.DEFAULT_CURRENT;
+    private Integer pageNo = PageConstant.DEFAULT_CURRENT;
 
     @Min(value = 1, message = "每页显示最小值为 1")
     private Integer pageSize = PageConstant.DEFAULT_SIZE;
 
     public PageParam(Integer pageCurrent, Integer pageSize) {
-        this.pageCurrent = DataValidationUtil.isNullOrLeZero(pageCurrent) ? PageConstant.DEFAULT_CURRENT : pageCurrent ;
+        this.pageNo = DataValidationUtil.isNullOrLeZero(pageCurrent) ? PageConstant.DEFAULT_CURRENT : pageCurrent ;
         this.pageSize = DataValidationUtil.isNullOrLeZero(pageSize) ? PageConstant.DEFAULT_SIZE : pageSize;
     }
 
     public Integer getOffSet() {
-        return (this.pageCurrent - 1) * this.pageSize;
+        return (this.pageNo - 1) * this.pageSize;
     }
 }

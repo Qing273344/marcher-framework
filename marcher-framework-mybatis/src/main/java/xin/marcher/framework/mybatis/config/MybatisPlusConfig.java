@@ -26,10 +26,10 @@ public class MybatisPlusConfig {
     /**
      * 注入主键生成器
      */
-    @Bean
-    public IKeyGenerator keyGenerator(){
-        return new H2KeyGenerator();
-    }
+//    @Bean
+//    public IKeyGenerator keyGenerator(){
+//        return new H2KeyGenerator();
+//    }
 
     /**
      * 乐观锁插件

@@ -21,6 +21,7 @@
         <module>marcher-framework-oss</module>
         <module>marcher-framework-redis</module>
         <module>marcher-framework-z</module>
+        <module>marcher-framework-log</module>
     </modules>
 
 

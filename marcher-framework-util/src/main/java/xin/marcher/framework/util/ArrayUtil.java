@@ -9,6 +9,12 @@ import java.util.Arrays;
  */
 public class ArrayUtil {
 
+    private static final Object[] EMPTY = new Object[0];
+
+    public static Object[] empty() {
+        return EMPTY;
+    }
+
     /**
      * 向数组内追加元素
      *

@@ -19,31 +19,49 @@ import java.util.Set;
  */
 public class ValidateUtil {
 
-    private static Validator validator;
+    private static final Validator VALIDATOR;
 
     static {
         ValidatorFactory factory = Validation.byProvider(HibernateValidator.class)
                 .configure()
                 .addProperty("hibernate.validator.fail_fast", "true")
                 .buildValidatorFactory();
-        validator = factory.getValidator();
+        VALIDATOR = factory.getValidator();
+    }
+
+    /**
+     * 是否包含错误
+     *
+     * @param t     校验对象
+     * @param <T>   T
+     * @return      是否
+     */
+    public static <T> boolean hasErrors(T t) {
+        return violation(t).isSuccess();
+    }
+
+    public static <T> String getMessage(T t) {
+        return violation(t).getMessage();
+    }
+
+    public static <T> String getMessage(T t, Class<?>... groups) {
+        return violation(t, groups).getMessage();
     }
 
     public static <T> ValidateResult violation(T t, Class<?>... groups) {
         try {
             Set<ConstraintViolation<T>> constraintViolations;
             if (groups == null || groups.length <= 0) {
-                constraintViolations = validator.validate(t, Default.class);
+                constraintViolations = VALIDATOR.validate(t, Default.class);
             } else {
-                // 将Default加入group中
-                Class<?>[] destGroups = ArrayUtil.add(groups, Default.class);
-                constraintViolations = validator.validate(t, destGroups);
+                // 将 Default 加入 group 中
+                constraintViolations = VALIDATOR.validate(t, ArrayUtil.add(groups, Default.class));
             }
-            if (constraintViolations.size() >= 1) {
+            if (constraintViolations.size() > 0) {
                 String message = constraintViolations.iterator().next().getMessage();
                 return ValidateResult.errorInstance(message);
             }
-        } catch (Exception e){
+        } catch (Exception e) {
             throw new UtilException("marcher-framework-mvc validation -->  error! to contact the administrator", e);
         }
         return ValidateResult.SUCCESS;

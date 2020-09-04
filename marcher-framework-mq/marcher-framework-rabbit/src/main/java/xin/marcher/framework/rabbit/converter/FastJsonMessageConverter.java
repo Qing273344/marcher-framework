@@ -48,7 +48,7 @@ public class FastJsonMessageConverter<T> extends AbstractMessageConverter {
         }
         messageProperties.setContentType("application/json");
         messageProperties.setContentEncoding(this.defaultCharset);
-        messageProperties.setContentLength((long)bytes.length);
+        messageProperties.setContentLength(bytes.length);
 
         return new Message(bytes, messageProperties);
     }

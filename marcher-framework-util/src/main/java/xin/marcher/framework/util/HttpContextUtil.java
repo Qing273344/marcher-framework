@@ -35,7 +35,7 @@ public class HttpContextUtil {
         return "GET, POST, OPTIONS, PUT, DELETE";
     }
 
-    public static String getHanders() {
+    public static String getHeaders() {
         return getHttpServletRequest().getHeader("Access-Control-Request-Headers");
     }
 
