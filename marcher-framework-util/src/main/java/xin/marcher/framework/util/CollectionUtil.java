@@ -7,12 +7,18 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 
 /**
+ * 集合工具类
+ *
  * @author marcher
  */
 public class CollectionUtil {
 
     public static <T> Set<T> asSet(T... objs) {
         return new HashSet<>(Arrays.asList(objs));
+    }
+
+    public static <T> List<T> asList(T... objs) {
+        return Arrays.asList(objs);
     }
 
     public static <T, U> List<U> convertList(List<T> from, Function<T, U> func) {

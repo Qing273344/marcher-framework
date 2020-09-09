@@ -47,7 +47,8 @@ public class ListUtil {
         }
 
         List<T> list = new ArrayList<>();
-        for (String str : splitStr.split(delimiter)) {
+        String[] split = splitStr.split(delimiter);
+        for (String str : split) {
             str = str.trim();
             try {
                 if (clazz.isAssignableFrom(Integer.class)) {

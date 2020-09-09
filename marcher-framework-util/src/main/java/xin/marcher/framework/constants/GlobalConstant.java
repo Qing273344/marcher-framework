@@ -25,6 +25,7 @@ public class GlobalConstant {
     public static final String CHAR_DIT = ".";
     public static final String CHAR_UNDER_LINE = "_";
     public static final String CHAR_CENTRE_LINE = "-";
+    public static final String CHAR_IP_SEPARATOR = "\\.";
 
     public static final String COOKIE_DOMAIN = "marcher.xin";
 }

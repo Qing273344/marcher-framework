@@ -1,6 +1,8 @@
 package xin.marcher.framework.util;
 
 /**
+ * 断言某些对象或值是否符合规定，否则抛出异常。经常用于做变量检查
+ *
  * @author marcher
  */
 public class Assert extends cn.hutool.core.lang.Assert {
@@ -10,4 +12,6 @@ public class Assert extends cn.hutool.core.lang.Assert {
             throw new IllegalArgumentException(msg);
         }
     }
+
+
 }

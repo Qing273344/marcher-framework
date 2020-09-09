@@ -41,19 +41,11 @@ public class HttpContextUtil {
 
     public static String getUserAgent() {
         String userAgent = getHttpServletRequest().getHeader("user-agent");
-        if (EmptyUtil.isEmptyTrim(userAgent)) {
-            return "";
-        }
-        return userAgent;
+        return EmptyUtil.isEmptyTrim(userAgent) ? GlobalConstant.CHAR_BLANK : userAgent;
     }
 
     public static String getContentType() {
         return getHttpServletRequest().getContentType();
-    }
-
-
-    public static String getSsOrigin() {
-        return getHttpServletRequest().getHeader("ss-origin");
     }
 
     public static boolean isGet() {
@@ -74,28 +66,29 @@ public class HttpContextUtil {
 
         String ip = request.getHeader("x-forwarded-for");
         if (ip != null) {
-            if (ip.indexOf(',') > -1) {
+            if (ip.contains(GlobalConstant.CHAR_COMMA)) {
                 String[] ips = ip.split(",");
                 ip = ips[0];
             }
         }
 
-        if (EmptyUtil.isEmptyTrim(ip) || "unknown".equalsIgnoreCase(ip)) {
+        boolean isUnknown = "unknown".equalsIgnoreCase(ip);
+        if (EmptyUtil.isEmptyTrim(ip) || isUnknown) {
             ip = request.getHeader("Proxy-Client-IP");
         }
-        if (EmptyUtil.isEmptyTrim(ip) || "unknown".equalsIgnoreCase(ip)) {
+        if (EmptyUtil.isEmptyTrim(ip) || isUnknown) {
             ip = request.getHeader("WL-Proxy-Client-IP");
         }
-        if (EmptyUtil.isEmptyTrim(ip) || "unknown".equalsIgnoreCase(ip)) {
+        if (EmptyUtil.isEmptyTrim(ip) || isUnknown) {
             ip = request.getHeader("X-Real-IP");
         }
-        if (EmptyUtil.isEmptyTrim(ip) || "unknown".equalsIgnoreCase(ip)) {
+        if (EmptyUtil.isEmptyTrim(ip) || isUnknown) {
             ip = request.getHeader("HTTP_CLIENT_IP");
         }
-        if (EmptyUtil.isEmptyTrim(ip) || "unknown".equalsIgnoreCase(ip)) {
+        if (EmptyUtil.isEmptyTrim(ip) || isUnknown) {
             ip = request.getHeader("HTTP_X_FORWARDED_FOR");
         }
-        if (EmptyUtil.isEmptyTrim(ip) || "unknown".equalsIgnoreCase(ip)) {
+        if (EmptyUtil.isEmptyTrim(ip) || isUnknown) {
             ip = request.getRemoteAddr();
         }
 
