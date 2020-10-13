@@ -1,6 +1,10 @@
 package xin.marcher.framework.util;
 
 import xin.marcher.framework.core.IEnumNorm;
+import xin.marcher.framework.wrapper.CodeNameWO;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * enum util
@@ -110,7 +114,50 @@ public class EnumUtil {
      * @return
      *      是:true, 否:false
      */
-    private static <T> boolean isEnum(Class<T> clazz) {
+    public static <T> boolean isEnum(Class<T> clazz) {
         return clazz.isEnum();
+    }
+
+    /**
+     * 获取所有枚举属性值
+     *
+     * @param clazz 枚举class
+     * @param <T>   T
+     * @return  result
+     */
+    public static <T> List<IEnumNorm> getEnumList(Class<T> clazz) {
+        List<IEnumNorm> list = new ArrayList<>();
+        if (!isEnum(clazz)) {
+            return list;
+        }
+        if (clazz.getEnumConstants().length <= 0) {
+            return list;
+        }
+
+        for (T ele : clazz.getEnumConstants()) {
+            IEnumNorm data = (IEnumNorm) ele;
+            list.add(data);
+        }
+        return list;
+    }
+
+    /**
+     * 获取枚举类所有值 code name 组合
+     *
+     * @param clazz 枚举 class
+     * @param <T>   T
+     * @return  result
+     */
+    public static <T> List<CodeNameWO> getList(Class<T> clazz) {
+        List<IEnumNorm> enumList = getEnumList(clazz);
+
+        List<CodeNameWO> list = new ArrayList<>();
+        for (IEnumNorm iEnumNorm : enumList) {
+            CodeNameWO codeNameWO = new CodeNameWO();
+            codeNameWO.setCode(iEnumNorm.getRealCode());;
+            codeNameWO.setName(iEnumNorm.getRealDesc());
+            list.add(codeNameWO);
+        }
+        return list;
     }
 }

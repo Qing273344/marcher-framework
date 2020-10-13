@@ -48,6 +48,10 @@ public class HttpContextUtil {
         return getHttpServletRequest().getContentType();
     }
 
+    public static String getRequestURL() {
+        return getHttpServletRequest().getRequestURL().toString();
+    }
+
     public static boolean isGet() {
         return getMethod().equalsIgnoreCase("get");
     }

@@ -49,6 +49,10 @@ public class CollectionUtil {
         return from.stream().collect(Collectors.toMap(keyFunc, item -> item));
     }
 
+    public static <T, K> Map<K, Long> countMap(List<T> from, Function<T, K> keyFunc) {
+        return from.stream().collect(Collectors.groupingBy(keyFunc, Collectors.counting()));
+    }
+
     /**
      * 是否存在交集
      */
@@ -123,4 +127,5 @@ public class CollectionUtil {
         }
         return list;
     }
+
 }

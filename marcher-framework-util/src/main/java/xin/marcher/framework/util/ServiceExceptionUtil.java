@@ -2,14 +2,14 @@ package xin.marcher.framework.util;
 
 import lombok.extern.slf4j.Slf4j;
 import xin.marcher.framework.core.IEnumNorm;
-import xin.marcher.framework.exception.ServiceException;
+import xin.marcher.framework.exception.BusinessException;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
 /**
- * {@link ServiceException} 工具类
+ * {@link BusinessException} 工具类
  *
  * 目的在于，格式化异常信息提示。
  * 考虑到 String.format 在参数不正确时会报错，因此使用 {} 作为占位符，并使用 {@link #doFormat(int, String, Object...)} 方法来格式化
@@ -46,8 +46,8 @@ public class ServiceExceptionUtil {
      * @param code 编号
      * @return 异常
      */
-    public static ServiceException exception(Integer code) {
-        return new ServiceException(code, messages.get(code));
+    public static BusinessException exception(Integer code) {
+        return new BusinessException(code, messages.get(code));
     }
 
     /**
@@ -56,8 +56,8 @@ public class ServiceExceptionUtil {
      * @param codeEnum  异常枚举
      * @return  异常
      */
-    public static ServiceException exception(IEnumNorm codeEnum) {
-        return new ServiceException(codeEnum.getRealCode(), codeEnum.getRealDesc());
+    public static BusinessException exception(IEnumNorm codeEnum) {
+        return new BusinessException(codeEnum.getRealCode(), codeEnum.getRealDesc());
     }
 
     /**
@@ -67,14 +67,14 @@ public class ServiceExceptionUtil {
      * @param params 消息提示的占位符对应的参数
      * @return 异常
      */
-    public static ServiceException exception(Integer code, Object... params) {
+    public static BusinessException exception(Integer code, Object... params) {
         String message = doFormat(code, messages.get(code), params);
-        return new ServiceException(code, message);
+        return new BusinessException(code, message);
     }
 
-    public static ServiceException exception(Integer code, String messagePattern, Object... params) {
+    public static BusinessException exception(Integer code, String messagePattern, Object... params) {
         String message = doFormat(code, messagePattern, params);
-        return new ServiceException(code, message);
+        return new BusinessException(code, message);
     }
 
     /**

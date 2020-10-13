@@ -1,4 +1,4 @@
-package xin.marcher.framework.util;
+package xin.marcher.framework.crypto;
 
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
@@ -22,7 +22,8 @@ import java.security.SecureRandom;
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class AESUtil {
 
-    private static final String ALGORITHM_AES = "AES";
+    public static final String ALGORITHM_AES = "AES";
+    public static final String CRYPTO_PREFIX = "MM@";
 
     /**
      * 加密
@@ -59,7 +60,7 @@ public class AESUtil {
         } catch (Exception e) {
             throw new RuntimeException("加密错误，错误信息：", e);
         }
-        return encryptedData;
+        return CRYPTO_PREFIX + encryptedData;
     }
 
     /**

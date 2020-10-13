@@ -1,6 +1,5 @@
 package xin.marcher.framework.util;
 
-
 import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
@@ -20,11 +19,25 @@ public class MapUtil {
         return list.stream().collect(Collectors.toMap(keyMapper, Function.identity(), (k1, k2) -> k2));
     }
 
+    public static <K, T> Map<K, T> list2MapPre(List<T> list, Function<? super T, ? extends K> keyMapper) {
+        if (EmptyUtil.isEmpty(list)) {
+            return Collections.emptyMap();
+        }
+        return list.stream().collect(Collectors.toMap(keyMapper, Function.identity(), (k1, k2) -> k1));
+    }
+
     public static <T, K, U> Map<K, U> list2Map(List<T> list, Function<? super T, ? extends K> keyMapper, Function<? super T, ? extends U> valueMapper) {
         if (EmptyUtil.isEmpty(list)) {
             return Collections.emptyMap();
         }
         return list.stream().collect(Collectors.toMap(keyMapper, valueMapper, (k1, k2) -> k2));
+    }
+
+    public static <T, K, U> Map<K, U> list2MapPre(List<T> list, Function<? super T, ? extends K> keyMapper, Function<? super T, ? extends U> valueMapper) {
+        if (EmptyUtil.isEmpty(list)) {
+            return Collections.emptyMap();
+        }
+        return list.stream().collect(Collectors.toMap(keyMapper, valueMapper, (k1, k2) -> k1));
     }
 
     public static <K, T> Map<K, T> list2LinkedMap(List<T> list, Function<? super T, ? extends K> keyMapper) {

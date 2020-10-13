@@ -52,10 +52,10 @@ public interface OssService {
      * @param srcBucketName  源桶
      * @param srcFileUrl     源文件url
      * @param destBucketName 正式桶
-     * @param directorys     新文件目录参数
+     * @param directoryList  新文件目录参数
      * @return 返回新文件key
      */
-    String copyOssObject(String srcBucketName, String srcFileUrl, String destBucketName, String... directorys);
+    String move(String srcBucketName, String srcFileUrl, String destBucketName, List<String> directoryList);
 
     /**
      * 删除

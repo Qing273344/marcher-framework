@@ -2,7 +2,8 @@ package xin.marcher.framework.mvc.response;
 
 import lombok.Data;
 import lombok.ToString;
-import xin.marcher.framework.constants.GlobalCodeEnum;
+import xin.marcher.framework.constants.GlobalErrorCodeEnum;
+import xin.marcher.framework.util.EmptyUtil;
 
 import java.io.Serializable;
 
@@ -32,7 +33,7 @@ public class BaseResult<T> implements Serializable {
     }
 
     BaseResult(T data) {
-        this(data, GlobalCodeEnum.OK.getRealCode(), GlobalCodeEnum.OK.getRealDesc());
+        this(data, GlobalErrorCodeEnum.OK.getRealCode(), GlobalErrorCodeEnum.OK.getRealDesc());
     }
 
     public BaseResult(T data, Integer code, String message) {
@@ -41,12 +42,12 @@ public class BaseResult<T> implements Serializable {
         this.message = message;
     }
 
-    public static <T> BaseResult<T> success() {
-        return success(null);
+    public static BaseResult<Boolean> success() {
+        return success(Boolean.TRUE);
     }
 
     public static <T> BaseResult<T> success(T data) {
-        return success(data, GlobalCodeEnum.OK.getRealCode(), GlobalCodeEnum.OK.getRealDesc());
+        return success(data, GlobalErrorCodeEnum.OK.getRealCode(), GlobalErrorCodeEnum.OK.getRealDesc());
     }
 
     public static <T> BaseResult<T> success(T data, int code, String msg) {
@@ -54,15 +55,26 @@ public class BaseResult<T> implements Serializable {
     }
 
     public static <T> BaseResult<T> error() {
-        return error(GlobalCodeEnum.SERVER_ERROR.getRealDesc());
+        return error(GlobalErrorCodeEnum.GL_SERVER_ERROR.getRealDesc());
     }
 
     public static <T> BaseResult<T> error(String msg) {
-        return error(GlobalCodeEnum.SERVER_ERROR.getRealCode(), msg);
+        return error(GlobalErrorCodeEnum.GL_SERVER_ERROR.getRealCode(), msg);
     }
 
     public static <T> BaseResult<T> error(int code, String msg) {
         return new BaseResult<>(null, code, msg);
     }
 
+    public boolean isSuccess() {
+        return this.code == GlobalErrorCodeEnum.OK.getRealCode();
+    }
+
+    public boolean isSuccessData() {
+        return isSuccess() && EmptyUtil.isNotEmpty(this.data);
+    }
+
+    public boolean isFail() {
+        return this.code != GlobalErrorCodeEnum.OK.getRealCode();
+    }
 }

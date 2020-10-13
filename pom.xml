@@ -22,6 +22,8 @@
         <module>marcher-framework-redis</module>
         <module>marcher-framework-z</module>
         <module>marcher-framework-log</module>
+        <module>marcher-framework-crypto</module>
+        <module>marcher-service-oss</module>
     </modules>
 
 

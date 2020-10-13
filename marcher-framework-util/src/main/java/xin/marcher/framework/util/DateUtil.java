@@ -16,6 +16,11 @@ import java.util.List;
 public class DateUtil {
 
     /**
+     * 一天的小时
+     */
+    private static final long DAY_HOUR = 24L;
+
+    /**
      * 一小时的毫秒值
      */
     public static final long HOUR_TIMESTAMP = 3600000L;
@@ -306,5 +311,48 @@ public class DateUtil {
             list.add(formatDate(beginDateTime.getMillis(), pattern));
         }
         return list;
+    }
+
+    public static Date addYears(Date date, int amount) {
+        return add(date, 1, amount);
+    }
+
+    public static Date addMonths(Date date, int amount) {
+        return add(date, 2, amount);
+    }
+
+    public static Date addWeeks(Date date, int amount) {
+        return add(date, 3, amount);
+    }
+
+    public static Date addDays(Date date, int amount) {
+        return add(date, 5, amount);
+    }
+
+    public static Date addHours(Date date, int amount) {
+        return add(date, 11, amount);
+    }
+
+    public static Date addMinutes(Date date, int amount) {
+        return add(date, 12, amount);
+    }
+
+    public static Date addSeconds(Date date, int amount) {
+        return add(date, 13, amount);
+    }
+
+    public static Date addMilliseconds(Date date, int amount) {
+        return add(date, 14, amount);
+    }
+
+    public static Date add(Date date, int calendarField, int amount) {
+        if (date == null) {
+            throw new IllegalArgumentException("The date must not be null");
+        } else {
+            Calendar c = Calendar.getInstance();
+            c.setTime(date);
+            c.add(calendarField, amount);
+            return c.getTime();
+        }
     }
 }

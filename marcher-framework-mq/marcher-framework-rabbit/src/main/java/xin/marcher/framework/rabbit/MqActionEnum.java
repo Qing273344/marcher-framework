@@ -23,7 +23,7 @@ public enum MqActionEnum {
     DELETE("delete")
     ;
 
-    private String action;
+    private final String action;
 
     MqActionEnum(String action) {
         this.action = action;

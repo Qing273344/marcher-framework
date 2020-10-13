@@ -1,0 +1,14 @@
+spring:
+  # 设置spring boot上传文件大小限制
+  servlet:
+    multipart:
+      max-file-size: 50MB
+      max-request-size: 50MB
+
+aliyun:
+  oss:
+    end-point: oss-cn-shenzhen.aliyuncs.com
+    access-key-id: MM@IC1iNUMY0bxptfY/S+ckjI7gEVT9CaAfWHWHYxWoAwg=
+    access-key-secret: MM@CPDzD4mKIroozQNzwGFNZ3QhlPo/VZXIfb5zIxp7pEQ=
+    bucket-name: marcher-test
+    temp-bucket-name: marcher-temp

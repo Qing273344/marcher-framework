@@ -14,7 +14,7 @@ public class EmptyUtil {
         return object == null ? "" : object.toString();
     }
 
-    public static boolean isEmpty(Collection collection) {
+    public static boolean isEmpty(Collection<Object> collection) {
         return collection == null || collection.isEmpty();
     }
 
@@ -43,7 +43,7 @@ public class EmptyUtil {
     }
 
 
-    public static boolean isNotEmpty(Collection collection){
+    public static boolean isNotEmpty(Collection<Object> collection){
         return !isEmpty(collection);
     }
 

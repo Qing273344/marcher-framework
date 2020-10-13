@@ -87,20 +87,20 @@ public class OssServiceImpl implements OssService {
      * @param srcBucketName     源桶
      * @param srcFileUrl        源文件url
      * @param destBucketName    正式桶
-     * @param directorys        目录参数
+     * @param directoryList     目录参数
      * @return
      *      返回正式文件key
      */
     @Override
-    public String copyOssObject(String srcBucketName, String srcFileUrl, String destBucketName, String... directorys){
+    public String move(String srcBucketName, String srcFileUrl, String destBucketName, List<String> directoryList){
         String srcOssKey = UrlPathUtil.getPathNoStartSeparate(srcFileUrl);
-        String destOssKey = UrlPathUtil.createPath(srcFileUrl, directorys);
+        String destOssKey = UrlPathUtil.createPath(srcFileUrl, directoryList);
         if (EmptyUtil.isEmpty(srcOssKey) || EmptyUtil.isEmpty(destOssKey)){
             return "";
         }
 
         try {
-            this.ossProvider.copyObject(srcBucketName, srcOssKey, destBucketName, destOssKey);
+            this.ossProvider.move(srcBucketName, srcOssKey, destBucketName, destOssKey);
         } catch (OSSException | ClientException e) {
             throw new UtilException("marcher-framework-oss aliyun sdk oss copy object error!", e);
         }

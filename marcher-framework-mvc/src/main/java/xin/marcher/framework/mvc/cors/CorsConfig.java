@@ -61,9 +61,7 @@ public class CorsConfig implements WebMvcConfigurer {
         source.registerCorsConfiguration("/**", config);
 
         // 创建 FilterRegistrationBean 对象
-        FilterRegistrationBean<CorsFilter> bean = new FilterRegistrationBean<>(
-                // 创建 CorsFilter 过滤器
-                new CorsFilter(source));
+        FilterRegistrationBean<CorsFilter> bean = new FilterRegistrationBean<>(new CorsFilter(source));
         // 设置 order 排序。这个顺序很重要哦，为避免麻烦请设置在最前
         bean.setOrder(0);
         return bean;

@@ -15,6 +15,14 @@ import java.util.stream.Collectors;
  */
 public class ListUtil {
 
+    public static void main(String[] args) {
+        List<Long> list = new ArrayList<>();
+        list.add(21421321312L);
+
+        String s = list2Str(list, "|");
+        System.out.println(s);
+    }
+
     public static <T> List<T> empty() {
         return new ArrayList<>();
     }
@@ -26,6 +34,9 @@ public class ListUtil {
     }
 
     public static <T> String list2Str(List<T> list, String delimiter) {
+        if (EmptyUtil.isEmpty(list)) {
+            return null;
+        }
         return Joiner.on(delimiter).join(list);
     }
 

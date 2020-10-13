@@ -160,13 +160,13 @@ public class FileUtil {
      * 创建文件路径
 	 * 栗子: [123,456] --> 123/456
 	 *
-	 * @param directorys	路径参数
+	 * @param directoryList	路径参数
 	 * @return
 	 * 		文件路径
 	 */
-	public static String createBasePath(List<String> directorys) {
+	public static String createBasePath(List<String> directoryList) {
 		StringBuilder directoryPath = new StringBuilder();
-		for (String directory : directorys) {
+		for (String directory : directoryList) {
 			directoryPath.append(directory).append("/");
 		}
 		return directoryPath.toString();

@@ -152,7 +152,7 @@ public class OssProvider {
      * @param destOssKey     文件key
      * @return 返回copy结果
      */
-    public CopyObjectResult copyObject(String srcBucketName, String srcOssKey, String destBucketName, String destOssKey) {
+    public CopyObjectResult move(String srcBucketName, String srcOssKey, String destBucketName, String destOssKey) {
         return client.copyObject(srcBucketName, srcOssKey, destBucketName, destOssKey);
     }
 

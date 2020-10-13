@@ -1,6 +1,9 @@
 package xin.marcher.framework.mybatis.dao;
 
 import com.baomidou.mybatisplus.annotation.TableLogic;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 import xin.marcher.framework.mybatis.annotation.InsertDeleted;
 
 /**
@@ -8,28 +11,13 @@ import xin.marcher.framework.mybatis.annotation.InsertDeleted;
  *
  * @author marcher
  */
+@EqualsAndHashCode(callSuper = true)
+@Data
+@ToString(callSuper = true)
 public class DeletableDO extends BaseDO {
 
     @TableLogic
     @InsertDeleted
     public Integer deleted;
 
-    public Integer getDeleted() {
-        return deleted;
-    }
-
-    public DeletableDO setDeleted(Integer deleted) {
-        this.deleted = deleted;
-        return this;
-    }
-
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(getClass().getSimpleName());
-        sb.append("{");
-        sb.append("deleted=").append(deleted);
-        sb.append("}");
-        return sb.toString();
-    }
 }

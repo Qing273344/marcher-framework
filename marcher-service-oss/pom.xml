@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>marcher-framework</artifactId>
+        <groupId>xin.marcher</groupId>
+        <version>1.0.0</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>marcher-service-oss</artifactId>
+    <packaging>pom</packaging>
+
+
+    <modules>
+        <module>marcher-oss-service</module>
+        <module>marcher-oss-client</module>
+    </modules>
+
+
+    <properties>
+        <marcher.util.version>1.0.0</marcher.util.version>
+        <marcher.oss.version>1.0.0</marcher.oss.version>
+        <marcher.crypto.version>1.0.0</marcher.crypto.version>
+
+        <spring.cloud.version>Hoxton.SR3</spring.cloud.version>
+    </properties>
+
+
+
+    <dependencies>
+        <dependency>
+            <groupId>xin.marcher</groupId>
+            <artifactId>marcher-framework-util</artifactId>
+            <version>${marcher.util.version}</version>
+        </dependency>
+    </dependencies>
+
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring.cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+</project>

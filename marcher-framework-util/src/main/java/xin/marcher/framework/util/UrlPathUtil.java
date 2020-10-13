@@ -2,6 +2,7 @@ package xin.marcher.framework.util;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.List;
 
 /**
  * 文件路径工具类
@@ -76,14 +77,14 @@ public class UrlPathUtil {
     /**
      * get ossKey
      *
-     * @param srcFileName 源文件url
-     * @param directorys  目录参数
+     * @param srcFileName   源文件url
+     * @param directoryList 目录参数
      * @return
      *      返回文件key
      */
-    public static String createPath(String srcFileName, String... directorys) {
+    public static String createPath(String srcFileName, List<String> directoryList) {
         String fileName = FileUtil.replaceFileName(srcFileName);
-        String directoryPath = FileUtil.createBasePath(directorys);
+        String directoryPath = FileUtil.createBasePath(directoryList);
         return directoryPath + fileName;
     }
 }

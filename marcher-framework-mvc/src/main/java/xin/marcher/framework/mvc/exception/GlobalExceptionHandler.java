@@ -1,7 +1,6 @@
 package xin.marcher.framework.mvc.exception;
 
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
@@ -10,9 +9,9 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.NoHandlerFoundException;
-import xin.marcher.framework.exception.HintException;
-import xin.marcher.framework.exception.ServiceException;
+import xin.marcher.framework.exception.BusinessException;
 import xin.marcher.framework.mvc.response.BaseResult;
+import xin.marcher.framework.util.HttpContextUtil;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
@@ -29,27 +28,15 @@ import java.util.Set;
 public class GlobalExceptionHandler {
 
     /**
-     * 自定义异常(提示)封装返回
-     *
-     * @param ex 异常
-     * @return 异常提示
-     */
-    @ExceptionHandler(HintException.class)
-    @ResponseBody
-    public BaseResult handleHintException(HintException ex) {
-        return BaseResult.error(ex.getCode(), ex.getMsg());
-    }
-
-    /**
      * 自定义异常封装返回
      *
      * @param ex 异常
      * @return 异常提示
      */
-    @ExceptionHandler(ServiceException.class)
+    @ExceptionHandler(BusinessException.class)
     @ResponseBody
-    public BaseResult handleServiceException(ServiceException ex) {
-        log.error(ex.getMessage(), ex);
+    public BaseResult handleServiceException(BusinessException ex) {
+        wrapperLog(ex);
         return BaseResult.error(ex.getCode(), ex.getMessage());
     }
 
@@ -62,6 +49,8 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(value = {MethodArgumentNotValidException.class, ValidationException.class})
     @ResponseBody
     public BaseResult handleMethodArgumentNotValidException(Exception ex) {
+        wrapperLog(ex);
+
         String errorMessage = "";
         if (ex instanceof MethodArgumentNotValidException) {
             MethodArgumentNotValidException methodArgumentNotValidException = (MethodArgumentNotValidException) ex;
@@ -93,7 +82,8 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(NoHandlerFoundException.class)
     @ResponseBody
     public BaseResult handlerNoFoundException(Exception ex) {
-        log.error(ex.getMessage(), ex);
+        wrapperLog(ex);
+
         return BaseResult.error(HttpStatus.NOT_FOUND.value(), "你好像访问到了其它地方...");
     }
 
@@ -106,8 +96,16 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(Exception.class)
     @ResponseBody
     public BaseResult handleException(Exception ex) {
-        log.error(ex.getMessage(), ex);
+        wrapperLog(ex);
         return BaseResult.error();
     }
 
+    protected void wrapperLog(Exception ex) {
+        String logStr = "";
+        logStr += "ip=" + HttpContextUtil.getRequestIp();
+        logStr += "`action=" + HttpContextUtil.getRequestURL();
+        logStr += "`msg=" + ex.getMessage();
+
+        log.error(logStr, ex);
+    }
 }
