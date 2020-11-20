@@ -153,10 +153,10 @@ public class EnumUtil {
 
         List<CodeNameWO> list = new ArrayList<>();
         for (IEnumNorm iEnumNorm : enumList) {
-            CodeNameWO codeNameWO = new CodeNameWO();
-            codeNameWO.setCode(iEnumNorm.getRealCode());;
-            codeNameWO.setName(iEnumNorm.getRealDesc());
-            list.add(codeNameWO);
+            CodeNameWO codeNameWo = new CodeNameWO();
+            codeNameWo.setCode(iEnumNorm.getRealCode());;
+            codeNameWo.setName(iEnumNorm.getRealDesc());
+            list.add(codeNameWo);
         }
         return list;
     }

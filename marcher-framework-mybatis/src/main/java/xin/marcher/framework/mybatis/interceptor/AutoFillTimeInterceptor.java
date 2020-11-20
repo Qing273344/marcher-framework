@@ -1,5 +1,7 @@
 package xin.marcher.framework.mybatis.interceptor;
 
+import cn.hutool.core.date.DateUnit;
+import cn.hutool.core.date.DateUtil;
 import org.apache.ibatis.executor.Executor;
 import org.apache.ibatis.mapping.MappedStatement;
 import org.apache.ibatis.mapping.SqlCommandType;
@@ -9,7 +11,6 @@ import xin.marcher.framework.constants.GlobalConstant;
 import xin.marcher.framework.mybatis.annotation.CreateTime;
 import xin.marcher.framework.mybatis.annotation.InsertDeleted;
 import xin.marcher.framework.mybatis.annotation.ModifyTime;
-import xin.marcher.framework.util.DateUtil;
 import xin.marcher.framework.util.EmptyUtil;
 
 import java.lang.reflect.Field;
@@ -54,7 +55,7 @@ public class AutoFillTimeInterceptor implements Interceptor {
                 }
             }
 
-            long now = DateUtil.now();
+            Date now = DateUtil.date();
             for (Field field : fields) {
                 // inset 语句 --> 更新 createTime
                 if (null != field.getAnnotation(CreateTime.class)) {

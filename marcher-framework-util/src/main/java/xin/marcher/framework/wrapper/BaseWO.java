@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
+
 /**
  * base wrapper
  *
@@ -12,7 +14,9 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class BaseWO {
+public class BaseWO implements Serializable {
+
+    private static final long serialVersionUID = 966889966648443916L;
 
     private Long id;
 

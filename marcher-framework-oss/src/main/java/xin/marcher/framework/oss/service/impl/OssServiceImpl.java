@@ -2,6 +2,7 @@ package xin.marcher.framework.oss.service.impl;
 
 import com.aliyun.oss.ClientException;
 import com.aliyun.oss.OSSException;
+import com.aliyun.oss.model.PolicyConditions;
 import com.aliyun.oss.model.PutObjectResult;
 import xin.marcher.framework.exception.UtilException;
 import xin.marcher.framework.oss.OssProvider;
@@ -12,6 +13,8 @@ import xin.marcher.framework.util.FileUtil;
 import xin.marcher.framework.util.UrlPathUtil;
 
 import java.io.File;
+import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -27,6 +30,29 @@ public class OssServiceImpl implements OssService {
         this.ossProvider = OssProvider.getInstance(config, isExternal);
         return this;
     }
+
+
+    /**
+     * 策略
+     * @param expiration    过期时间
+     * @param conds
+     * @return
+     */
+    @Override
+    public String generatePostPolicy(Date expiration, PolicyConditions conds) {
+        return this.ossProvider.generatePostPolicy(expiration, conds);
+    }
+
+    /**
+     * 生成签名
+     * @param postPolicy
+     * @return
+     */
+    @Override
+    public String calculatePostSignature(String postPolicy) {
+        return this.ossProvider.calculatePostSignature(postPolicy);
+    }
+
 
     /**
      * 上传文件

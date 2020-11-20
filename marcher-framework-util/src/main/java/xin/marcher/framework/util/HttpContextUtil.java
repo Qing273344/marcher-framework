@@ -5,30 +5,35 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 import xin.marcher.framework.constants.GlobalConstant;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 /**
- * requestUtil
+ * request util
  *
  * @author marcher
  */
 public class HttpContextUtil {
 
-    public static HttpServletRequest getHttpServletRequest() {
+    public static HttpServletRequest getRequest() {
         return ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
     }
 
+    public static HttpServletResponse getResponse() {
+        return ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getResponse();
+    }
+
     public static String getDomain() {
-        HttpServletRequest request = getHttpServletRequest();
+        HttpServletRequest request = getRequest();
         StringBuffer url = request.getRequestURL();
         return url.delete(url.length() - request.getRequestURI().length(), url.length()).toString();
     }
 
     public static String getOrigin() {
-        return getHttpServletRequest().getHeader("Origin");
+        return getRequest().getHeader("Origin");
     }
 
     public static String getMethod() {
-        return getHttpServletRequest().getMethod();
+        return getRequest().getMethod();
     }
 
     public static String getAllMethods() {
@@ -36,20 +41,20 @@ public class HttpContextUtil {
     }
 
     public static String getHeaders() {
-        return getHttpServletRequest().getHeader("Access-Control-Request-Headers");
+        return getRequest().getHeader("Access-Control-Request-Headers");
     }
 
     public static String getUserAgent() {
-        String userAgent = getHttpServletRequest().getHeader("user-agent");
+        String userAgent = getRequest().getHeader("user-agent");
         return EmptyUtil.isEmptyTrim(userAgent) ? GlobalConstant.CHAR_BLANK : userAgent;
     }
 
     public static String getContentType() {
-        return getHttpServletRequest().getContentType();
+        return getRequest().getContentType();
     }
 
     public static String getRequestURL() {
-        return getHttpServletRequest().getRequestURL().toString();
+        return getRequest().getRequestURL().toString();
     }
 
     public static boolean isGet() {
@@ -66,7 +71,7 @@ public class HttpContextUtil {
      * @return ip
      */
     public static String getRequestIp() {
-        HttpServletRequest request = getHttpServletRequest();
+        HttpServletRequest request = getRequest();
 
         String ip = request.getHeader("x-forwarded-for");
         if (ip != null) {

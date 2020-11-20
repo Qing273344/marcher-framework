@@ -1,15 +1,16 @@
-package xin.marcher.framework.mybatis.page;
+package xin.marcher.framework.api;
 
 import java.io.Serializable;
 import java.util.List;
 
 /**
- * dao查询数据包装
+ * 分页数据 Wrapper
  *
  * @author marcher
- * @param <T>   泛型定义
  */
-public final class PageWrapper<T> implements Serializable {
+public class ApiPageWrapper<T> implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     private List<T> list;
 
@@ -19,7 +20,7 @@ public final class PageWrapper<T> implements Serializable {
         return list;
     }
 
-    public PageWrapper<T> setList(List<T> list) {
+    public ApiPageWrapper<T> setList(List<T> list) {
         this.list = list;
         return this;
     }
@@ -28,7 +29,7 @@ public final class PageWrapper<T> implements Serializable {
         return total;
     }
 
-    public PageWrapper<T> setTotal(Integer total) {
+    public ApiPageWrapper<T> setTotal(Integer total) {
         this.total = total;
         return this;
     }

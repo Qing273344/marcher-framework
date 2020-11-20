@@ -10,7 +10,6 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>marcher-oss-service</artifactId>
-    <packaging>pom</packaging>
 
 
     <dependencies>
@@ -31,5 +30,22 @@
             <artifactId>marcher-framework-crypto</artifactId>
             <version>${marcher.crypto.version}</version>
         </dependency>
+
+        <!-- 构建 Web 服务 -->
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+        </dependency>
     </dependencies>
+
+    <build>
+        <finalName>${project.artifactId}</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
 </project>

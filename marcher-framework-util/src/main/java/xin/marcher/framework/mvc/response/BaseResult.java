@@ -2,8 +2,10 @@ package xin.marcher.framework.mvc.response;
 
 import lombok.Data;
 import lombok.ToString;
-import xin.marcher.framework.constants.GlobalErrorCodeEnum;
+import xin.marcher.framework.constants.GlobalCodeEnum;
+import xin.marcher.framework.mvc.request.PageParam;
 import xin.marcher.framework.util.EmptyUtil;
+import xin.marcher.framework.wrapper.PageWO;
 
 import java.io.Serializable;
 
@@ -33,7 +35,7 @@ public class BaseResult<T> implements Serializable {
     }
 
     BaseResult(T data) {
-        this(data, GlobalErrorCodeEnum.OK.getRealCode(), GlobalErrorCodeEnum.OK.getRealDesc());
+        this(data, GlobalCodeEnum.OK.getRealCode(), GlobalCodeEnum.OK.getRealDesc());
     }
 
     public BaseResult(T data, Integer code, String message) {
@@ -47,7 +49,11 @@ public class BaseResult<T> implements Serializable {
     }
 
     public static <T> BaseResult<T> success(T data) {
-        return success(data, GlobalErrorCodeEnum.OK.getRealCode(), GlobalErrorCodeEnum.OK.getRealDesc());
+        return success(data, GlobalCodeEnum.OK.getRealCode(), GlobalCodeEnum.OK.getRealDesc());
+    }
+
+    public static <T> BaseResult<PageResult<T>> success(PageWO<T> pageWo, PageParam pageParam) {
+        return success(PageResult.rest(pageWo, pageParam));
     }
 
     public static <T> BaseResult<T> success(T data, int code, String msg) {
@@ -55,11 +61,11 @@ public class BaseResult<T> implements Serializable {
     }
 
     public static <T> BaseResult<T> error() {
-        return error(GlobalErrorCodeEnum.GL_SERVER_ERROR.getRealDesc());
+        return error(GlobalCodeEnum.GL_SERVER_ERROR.getRealDesc());
     }
 
     public static <T> BaseResult<T> error(String msg) {
-        return error(GlobalErrorCodeEnum.GL_SERVER_ERROR.getRealCode(), msg);
+        return error(GlobalCodeEnum.GL_SERVER_ERROR.getRealCode(), msg);
     }
 
     public static <T> BaseResult<T> error(int code, String msg) {
@@ -67,7 +73,7 @@ public class BaseResult<T> implements Serializable {
     }
 
     public boolean isSuccess() {
-        return this.code == GlobalErrorCodeEnum.OK.getRealCode();
+        return this.code == GlobalCodeEnum.OK.getRealCode();
     }
 
     public boolean isSuccessData() {
@@ -75,6 +81,6 @@ public class BaseResult<T> implements Serializable {
     }
 
     public boolean isFail() {
-        return this.code != GlobalErrorCodeEnum.OK.getRealCode();
+        return !isSuccess();
     }
 }

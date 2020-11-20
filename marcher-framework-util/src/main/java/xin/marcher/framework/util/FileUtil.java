@@ -10,6 +10,8 @@ import xin.marcher.framework.exception.UtilException;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URL;
+import java.net.URLConnection;
 import java.util.List;
 
 /**
@@ -245,5 +247,27 @@ public class FileUtil {
 	 */
 	public static InputStream getResourcesFileInputStream(String fileName) {
 		return Thread.currentThread().getContextClassLoader().getResourceAsStream(fileName);
+	}
+
+
+	/**
+	 * 通过 url 获取网络文件流
+	 * @param urlPath
+	 * @return
+	 */
+	public static InputStream getNetworkFileInputStream(String urlPath) {
+		InputStream inputStream;
+		try {
+			// 构造URL
+			URL url = new URL(urlPath);
+			// 打开连接
+			URLConnection con = url.openConnection();
+			// 输入流
+			inputStream = con.getInputStream();
+		} catch (Exception ex) {
+			throw new UtilException("获取网络文件错误", ex);
+		}
+
+		return inputStream;
 	}
 }

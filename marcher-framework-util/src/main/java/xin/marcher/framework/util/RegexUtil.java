@@ -34,7 +34,7 @@ public class RegexUtil {
     /**
      * URL
      */
-    public static final String REGEX_URL = "^(http|https)://[a-zA-Z0-9_-]+.*";
+    public static final String REGEX_URL = "(https?|ftp|file)://[-A-Za-z0-9+&@#/%?=~_|!:,.;]+[-A-Za-z0-9+&@#/%=~_|]";
 
     /**
      * 中文和英文
@@ -151,13 +151,6 @@ public class RegexUtil {
             return str.replaceFirst(regex, "").trim();
         }
         return str;
-    }
-
-
-    public static void main(String[] args) {
-        String str = "1878787878";
-        String s = replaceFirst(str, INDIA_PHONE_ZONE);
-        System.out.println(s);
     }
 
 }

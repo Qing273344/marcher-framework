@@ -5,6 +5,7 @@ import xin.marcher.framework.mybatis.annotation.CreateTime;
 import xin.marcher.framework.mybatis.annotation.ModifyTime;
 
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * 基础实体对象
@@ -15,9 +16,9 @@ import java.io.Serializable;
 public class BaseDO {
 
     @CreateTime
-    public Long createTime;
+    public Date createTime;
 
     @ModifyTime
-    public Long modifyTime;
+    public Date modifyTime;
 
 }

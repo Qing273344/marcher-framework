@@ -8,7 +8,9 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import xin.marcher.framework.constants.GlobalConstant;
 import xin.marcher.framework.mvc.response.BaseResult;
+import xin.marcher.framework.util.EmptyUtil;
 import xin.marcher.framework.util.MapUtil;
 import xin.marcher.framework.util.ObjectUtil;
 
@@ -32,9 +34,22 @@ public class FilterController extends BasicErrorController {
     public ResponseEntity<Map<String, Object>> error(HttpServletRequest request) {
         Map<String, Object> body = getErrorAttributes(request, isIncludeStackTrace(request, MediaType.ALL));
 
-        BaseResult<Object> error = BaseResult.error((int) body.get("status"), String.valueOf(body.get("message")));
+        BaseResult<Object> error = BaseResult.error(getBusinessStatus(request), String.valueOf(body.get("message")));
         Map<String, Object> map = ObjectUtil.objectToMap(error);
 
         return new ResponseEntity<>(map, HttpStatus.OK);
+    }
+
+    /**
+     * 重写获取状态, 默认的会根据系统返回状态码, 此处加上自定义状态码逻辑
+     * @param request
+     * @return
+     */
+    public Integer getBusinessStatus(HttpServletRequest request) {
+        Object status = request.getAttribute(GlobalConstant.BUSINESS_STATUS);
+        if (EmptyUtil.isEmpty(status)) {
+            return super.getStatus(request).value();
+        }
+        return (Integer) status;
     }
 }

@@ -10,6 +10,7 @@ import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -89,6 +90,27 @@ public class OssProvider {
     private Integer getEndPoint(final boolean isExternal) {
         return isExternal ? OssEndPointTypeEnum.END_POINT_EXTERNAL.getRealCode() : OssEndPointTypeEnum.END_POINT_INTERNAL.getRealCode();
     }
+
+
+    /**
+     * 策略
+     * @param expiration    过期时间
+     * @param conds
+     * @return
+     */
+    public String generatePostPolicy(Date expiration, PolicyConditions conds) {
+        return this.client.generatePostPolicy(expiration, conds);
+    }
+
+    /**
+     * 生成签名
+     * @param postPolicy
+     * @return
+     */
+    public String calculatePostSignature(String postPolicy) {
+        return this.client.calculatePostSignature(postPolicy);
+    }
+
 
     /**
      * 流式下载文件

@@ -4,6 +4,15 @@ spring:
     multipart:
       max-file-size: 50MB
       max-request-size: 50MB
+  # cloud
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+        service: ${spring.application.name}
+
+crypto:
+  key-url: http://localhost:9020/config/encryption/key
 
 aliyun:
   oss:

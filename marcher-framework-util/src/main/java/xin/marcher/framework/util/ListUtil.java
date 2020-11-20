@@ -2,10 +2,7 @@ package xin.marcher.framework.util;
 
 import com.google.common.base.Joiner;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -15,14 +12,6 @@ import java.util.stream.Collectors;
  */
 public class ListUtil {
 
-    public static void main(String[] args) {
-        List<Long> list = new ArrayList<>();
-        list.add(21421321312L);
-
-        String s = list2Str(list, "|");
-        System.out.println(s);
-    }
-
     public static <T> List<T> empty() {
         return new ArrayList<>();
     }
@@ -31,6 +20,10 @@ public class ListUtil {
         List<T> list = new ArrayList<>();
         list.add(element);
         return list;
+    }
+
+    public static List<String> multiple(String... args) {
+        return Arrays.asList(args);
     }
 
     public static <T> String list2Str(List<T> list, String delimiter) {

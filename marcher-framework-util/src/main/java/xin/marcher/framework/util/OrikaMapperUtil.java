@@ -1,4 +1,4 @@
-package xin.marcher.framework.z.util;
+package xin.marcher.framework.util;
 
 import cn.hutool.core.exceptions.UtilException;
 import ma.glasnost.orika.MapperFacade;
@@ -6,8 +6,6 @@ import ma.glasnost.orika.MapperFactory;
 import ma.glasnost.orika.converter.builtin.DateToStringConverter;
 import ma.glasnost.orika.impl.DefaultMapperFactory;
 import ma.glasnost.orika.metadata.ClassMapBuilder;
-import xin.marcher.framework.z.SL;
-import xin.marcher.framework.z.SS;
 
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
@@ -34,7 +32,7 @@ public enum OrikaMapperUtil {
     }
 
     OrikaMapperUtil() {
-        //用于String转Date,不注册转换格式会出现异常
+        // 用于String转Date,不注册转换格式会出现异常
         BaseMapper.MAPPER_FACTORY.getConverterFactory().registerConverter(new DateToStringConverter("yyyy-MM-dd HH:mm:ss"));
         MAPPER_FACADE = BaseMapper.MAPPER_FACTORY.getMapperFacade();
     }
@@ -127,16 +125,6 @@ public enum OrikaMapperUtil {
             CACHE_MAPPER_FACADE_MAP.put(mapKey, mapperFacade);
         }
         return mapperFacade;
-    }
-
-    public static void main(String[] args) {
-        SL sl = new SL();
-        sl.setTime(new Date());
-        sl.setName("ss");
-        sl.setNn(1600010648124L);
-
-        SS ss = OrikaMapperUtil.INSTANCE.map(sl, SS.class);
-        System.out.println(ss);
     }
 
 }

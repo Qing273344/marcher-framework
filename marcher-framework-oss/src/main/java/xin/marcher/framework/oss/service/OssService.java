@@ -1,6 +1,9 @@
 package xin.marcher.framework.oss.service;
 
+import com.aliyun.oss.model.PolicyConditions;
+
 import java.io.File;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -9,6 +12,21 @@ import java.util.List;
  * @author marcher
  */
 public interface OssService {
+
+    /**
+     * 策略
+     * @param expiration    过期时间
+     * @param conds
+     * @return
+     */
+    String generatePostPolicy(Date expiration, PolicyConditions conds);
+
+    /**
+     * 生成签名
+     * @param postPolicy
+     * @return
+     */
+    String calculatePostSignature(String postPolicy);
 
     /**
      * 上传文件

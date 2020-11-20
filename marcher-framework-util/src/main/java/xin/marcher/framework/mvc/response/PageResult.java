@@ -4,6 +4,7 @@ import lombok.Data;
 import lombok.ToString;
 import xin.marcher.framework.mvc.PageConstant;
 import xin.marcher.framework.mvc.request.PageParam;
+import xin.marcher.framework.wrapper.PageWO;
 
 import java.io.Serializable;
 import java.util.Collections;
@@ -61,6 +62,10 @@ public  class PageResult<T> implements Serializable {
 
     public static <T> PageResult<T> rest(List<T> list, Integer totalRow, PageParam pageParam) {
         return rest(list, (long) totalRow, pageParam);
+    }
+
+    public static <T> PageResult<T> rest(PageWO<T> pageWo, PageParam pageParam) {
+        return rest(pageWo.getList(), pageWo.getTotal(), pageParam);
     }
 
     public static <T> PageResult<T> rest(List<T> list, Long totalRow, PageParam pageParam) {

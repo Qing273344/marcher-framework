@@ -1,29 +1,21 @@
-package xin.marcher.framework.mybatis.mapper;
+package xin.marcher.framework.mybatis.service;
 
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.baomidou.mybatisplus.extension.service.IService;
 import xin.marcher.framework.mvc.request.PageParam;
+import xin.marcher.framework.mvc.response.BaseResult;
+import xin.marcher.framework.mvc.response.PageResult;
 import xin.marcher.framework.wrapper.PageWO;
 
+import java.util.List;
+
 /**
- * 拓展 MyBatis Plus BaseMapper类
+ * 自定义基础 service
  *
  * @author marcher
  */
-public interface BaseMapper<T> extends com.baomidou.mybatisplus.core.mapper.BaseMapper<T> {
-
-    /**
-     * 根据 entity 条件，查询一条记录
-     *
-     * @param queryWrapper 实体对象封装操作类（可以为 null）
-     * @return 实体
-     */
-    default T selectLimitOne(QueryWrapper<T> queryWrapper) {
-        queryWrapper.last("LIMIT 1");
-
-        return selectOne(queryWrapper);
-    }
+public interface BaseService<T> extends IService<T> {
 
     /**
      * page data wrapper
@@ -54,17 +46,30 @@ public interface BaseMapper<T> extends com.baomidou.mybatisplus.core.mapper.Base
      *      分页的第一条数据
      */
     default T getPageOne(IPage<T> iPage) {
-        return iPage.getTotal() >= 1 ? iPage.getRecords().get(0) : null;
+        return iPage.getTotal() > 1 ? iPage.getRecords().get(0) : null;
     }
 
     /**
-     * 分页数据包装
+     * 是否为空
      *
-     * @param iPage mybatis plus分页数据
-     * @return
-     *      自定义分页数据封装
+     * @param pageWO   pageWO
+     * @return  result
      */
-    default PageWO<T> convert(IPage<T> iPage) {
-        return new PageWO<>(iPage.getRecords(), iPage.getTotal());
+    default boolean isEmpty(PageWO pageWO) {
+        return pageWO.getList().size() <= 0;
     }
+
+    /**
+     * 返回空
+     *
+     * @return  result
+     */
+    default BaseResult pageEmpty() {
+        return pageEmpty(0);
+    }
+
+    default BaseResult pageEmpty(long total) {
+        return BaseResult.success(new PageWO<>(null, total));
+    }
+
 }

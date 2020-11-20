@@ -15,7 +15,6 @@ import xin.marcher.framework.constants.GlobalConstant;
 import xin.marcher.framework.log.annotation.RequestLog;
 import xin.marcher.framework.util.HttpContextUtil;
 
-import javax.servlet.http.HttpServletRequest;
 import java.lang.reflect.Method;
 import java.util.Arrays;
 
@@ -97,7 +96,7 @@ public class RequestLogAspect {
     }
 
     private void appendAction(StringBuilder logStr) {
-        logStr.append("action=").append(HttpContextUtil.getHttpServletRequest().getRequestURL()).append(GlobalConstant.CHAR_SPACE);
+        logStr.append("action=").append(HttpContextUtil.getRequest().getRequestURL()).append(GlobalConstant.CHAR_SPACE);
     }
 
     private void appendName(StringBuilder logStr, String name) {

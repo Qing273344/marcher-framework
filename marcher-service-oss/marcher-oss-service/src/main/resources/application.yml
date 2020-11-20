@@ -1,5 +1,4 @@
 server:
-  host: localhost
   port: 7027
   tomcat:
     uri-encoding: utf-8

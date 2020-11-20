@@ -6,7 +6,7 @@ package xin.marcher.framework.core;
  *
  * @author marcher
  */
-public interface IEnumCodeWithIntro {
+public interface IEnumCodeWithIntro extends IEnumNorm {
 
     /**
      * 收集枚举中的 int
@@ -24,4 +24,5 @@ public interface IEnumCodeWithIntro {
      *      String
      */
     String intro();
+
 }
