@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RestController;
 import xin.marcher.framework.constants.GlobalConstant;
 import xin.marcher.framework.mvc.response.BaseResult;
 import xin.marcher.framework.util.EmptyUtil;
-import xin.marcher.framework.util.MapUtil;
 import xin.marcher.framework.util.ObjectUtil;
 
 import javax.servlet.http.HttpServletRequest;

@@ -1,7 +1,6 @@
 package xin.marcher.framework.wrapper;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 

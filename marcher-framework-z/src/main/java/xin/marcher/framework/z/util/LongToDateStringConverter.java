@@ -4,8 +4,6 @@ import ma.glasnost.orika.converter.BidirectionalConverter;
 import ma.glasnost.orika.metadata.Type;
 
 import java.lang.annotation.Annotation;
-import java.math.BigDecimal;
-import java.math.RoundingMode;
 
 public class LongToDateStringConverter extends BidirectionalConverter<Long, String> {
 

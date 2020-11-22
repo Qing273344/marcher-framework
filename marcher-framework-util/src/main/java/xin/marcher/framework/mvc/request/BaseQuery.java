@@ -1,6 +1,7 @@
 package xin.marcher.framework.mvc.request;
 
-import lombok.*;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 /**
  * query data

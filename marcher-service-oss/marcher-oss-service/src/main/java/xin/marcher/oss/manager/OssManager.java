@@ -8,7 +8,6 @@ import com.aliyun.oss.model.PolicyConditions;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.web.multipart.MultipartFile;
 import xin.marcher.framework.exception.UtilException;
 import xin.marcher.framework.oss.OSSFactory;
 import xin.marcher.framework.oss.property.OssProperties;
@@ -18,7 +17,6 @@ import xin.marcher.framework.util.CollectionUtil;
 import xin.marcher.framework.util.DateUtil;
 import xin.marcher.framework.util.UrlPathUtil;
 
-import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.Date;
 import java.util.List;

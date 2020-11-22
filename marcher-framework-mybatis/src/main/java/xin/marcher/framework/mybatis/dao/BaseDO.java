@@ -4,7 +4,6 @@ import lombok.Data;
 import xin.marcher.framework.mybatis.annotation.CreateTime;
 import xin.marcher.framework.mybatis.annotation.ModifyTime;
 
-import java.io.Serializable;
 import java.util.Date;
 
 /**

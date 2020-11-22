@@ -5,10 +5,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
 import xin.marcher.framework.mvc.request.PageParam;
 import xin.marcher.framework.mvc.response.BaseResult;
-import xin.marcher.framework.mvc.response.PageResult;
 import xin.marcher.framework.wrapper.PageWO;
-
-import java.util.List;
 
 /**
  * 自定义基础 service
