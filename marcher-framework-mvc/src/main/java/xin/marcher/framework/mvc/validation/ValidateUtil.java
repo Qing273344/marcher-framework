@@ -1,8 +1,8 @@
 package xin.marcher.framework.mvc.validation;
 
 import org.hibernate.validator.HibernateValidator;
-import xin.marcher.framework.exception.UtilException;
-import xin.marcher.framework.util.ArrayUtil;
+import xin.marcher.framework.common.exception.UtilException;
+import xin.marcher.framework.common.util.ArrayUtil;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.Validation;

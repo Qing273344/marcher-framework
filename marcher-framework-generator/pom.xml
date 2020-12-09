@@ -10,6 +10,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>marcher-framework-generator</artifactId>
+    <packaging>pom</packaging>
+    <version>${marcher-framework-generator.version}</version>
 
 
     <properties>
@@ -27,16 +29,14 @@
         <mysql.version>8.0.17</mysql.version>
         <mssql.version>4.0</mssql.version>
         <oracle.version>11.2.0.3</oracle.version>
-
-        <marcher.framework.util>1.0.0</marcher.framework.util>
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>xin.marcher</groupId>
-            <artifactId>marcher-framework-util</artifactId>
-            <version>${marcher.framework.util}</version>
+            <artifactId>marcher-framework-common</artifactId>
         </dependency>
+
 
         <dependency>
             <groupId>com.baomidou</groupId>

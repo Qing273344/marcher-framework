@@ -3,8 +3,8 @@ package xin.marcher.framework.oss;
 import com.aliyun.oss.OSSClient;
 import com.aliyun.oss.model.*;
 import xin.marcher.framework.oss.property.OssProperties;
-import xin.marcher.framework.util.EmptyUtil;
-import xin.marcher.framework.util.UrlPathUtil;
+import xin.marcher.framework.common.util.EmptyUtil;
+import xin.marcher.framework.common.util.UrlPathUtil;
 
 import java.io.ByteArrayInputStream;
 import java.io.File;

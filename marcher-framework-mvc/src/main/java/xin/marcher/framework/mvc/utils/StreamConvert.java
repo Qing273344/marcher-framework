@@ -2,7 +2,7 @@ package xin.marcher.framework.mvc.utils;
 
 import cn.hutool.core.net.URLDecoder;
 import lombok.extern.slf4j.Slf4j;
-import xin.marcher.framework.util.EmptyUtil;
+import xin.marcher.framework.common.util.EmptyUtil;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.*;

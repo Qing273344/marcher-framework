@@ -4,10 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.*;
 import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
-import xin.marcher.framework.exception.UtilException;
-import xin.marcher.framework.util.DataValidationUtil;
-import xin.marcher.framework.util.EmptyUtil;
-import xin.marcher.framework.util.ListUtil;
+import xin.marcher.framework.common.exception.UtilException;
+import xin.marcher.framework.common.util.DataValidationUtil;
+import xin.marcher.framework.common.util.EmptyUtil;
+import xin.marcher.framework.common.util.ListUtil;
 
 import java.util.*;
 import java.util.concurrent.TimeUnit;

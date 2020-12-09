@@ -11,12 +11,10 @@
 
     <artifactId>marcher-framework-crypto</artifactId>
     <packaging>jar</packaging>
-    <version>1.0.0</version>
+    <version>${marcher-framework-crypto.version}</version>
 
 
     <properties>
-        <marcher.framework.util>1.0.0</marcher.framework.util>
-
         <jasypt.version>3.0.2</jasypt.version>
     </properties>
 
@@ -24,9 +22,7 @@
     <dependencies>
         <dependency>
             <groupId>xin.marcher</groupId>
-            <artifactId>marcher-framework-util</artifactId>
-            <version>${marcher.framework.util}</version>
-            <scope>provided</scope>
+            <artifactId>marcher-framework-common</artifactId>
         </dependency>
 
         <dependency>

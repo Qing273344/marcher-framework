@@ -3,9 +3,9 @@ package xin.marcher.framework.mybatis.service;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
-import xin.marcher.framework.mvc.request.PageParam;
-import xin.marcher.framework.mvc.response.BaseResult;
-import xin.marcher.framework.wrapper.PageWO;
+import xin.marcher.framework.common.mvc.request.PageParam;
+import xin.marcher.framework.common.mvc.response.BaseResult;
+import xin.marcher.framework.common.wrapper.PageWO;
 
 /**
  * 自定义基础 service

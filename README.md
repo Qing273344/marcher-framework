@@ -30,7 +30,7 @@ OSS
 ## marcher-framework-redis
 redis
 
-## marcher-framework-util
+## marcher-framework-common
 工具类
 
 ## marcher-framework-sharding(未)

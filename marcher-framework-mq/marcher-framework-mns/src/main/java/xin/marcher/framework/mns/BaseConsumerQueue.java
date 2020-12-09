@@ -8,8 +8,8 @@ import com.aliyun.mns.model.Message;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import xin.marcher.framework.util.EmptyUtil;
-import xin.marcher.framework.util.SpringContextUtil;
+import xin.marcher.framework.common.util.EmptyUtil;
+import xin.marcher.framework.common.util.SpringContextUtil;
 
 import java.util.ArrayList;
 import java.util.List;

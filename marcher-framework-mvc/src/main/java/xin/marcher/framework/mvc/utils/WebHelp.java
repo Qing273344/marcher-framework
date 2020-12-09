@@ -3,7 +3,7 @@ package xin.marcher.framework.mvc.utils;
 import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
-import xin.marcher.framework.util.EmptyUtil;
+import xin.marcher.framework.common.util.EmptyUtil;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.BufferedInputStream;

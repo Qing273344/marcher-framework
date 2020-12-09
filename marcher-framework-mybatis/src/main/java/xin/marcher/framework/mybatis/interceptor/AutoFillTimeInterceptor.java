@@ -6,11 +6,11 @@ import org.apache.ibatis.mapping.MappedStatement;
 import org.apache.ibatis.mapping.SqlCommandType;
 import org.apache.ibatis.plugin.*;
 import org.springframework.stereotype.Component;
-import xin.marcher.framework.constants.GlobalConstant;
+import xin.marcher.framework.common.constants.GlobalConstant;
 import xin.marcher.framework.mybatis.annotation.CreateTime;
 import xin.marcher.framework.mybatis.annotation.InsertDeleted;
 import xin.marcher.framework.mybatis.annotation.ModifyTime;
-import xin.marcher.framework.util.EmptyUtil;
+import xin.marcher.framework.common.util.EmptyUtil;
 
 import java.lang.reflect.Field;
 import java.util.*;

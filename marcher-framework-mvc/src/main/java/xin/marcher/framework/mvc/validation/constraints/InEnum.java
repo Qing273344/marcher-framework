@@ -1,6 +1,6 @@
 package xin.marcher.framework.mvc.validation.constraints;
 
-import xin.marcher.framework.core.IEnumCodeWithIntro;
+import xin.marcher.framework.common.core.IEnumCodeWithIntro;
 import xin.marcher.framework.mvc.validation.constraintvalidators.InEnumValidator;
 
 import javax.validation.Constraint;
@@ -9,7 +9,7 @@ import java.lang.annotation.*;
 
 /**
  * InEnum
- *
+ * <p>
  * 栗子: @InEnum(value = GenderEnum.class, message = "性别必须是 {value}")
  *
  * @author marcher
@@ -41,14 +41,12 @@ public @interface InEnum {
     Class<? extends Payload>[] payload() default {};
 
     /**
-     *  Defines several {@code @InEnum} constraints on the same element.
+     * Defines several {@code @InEnum} constraints on the same element.
      */
     @Target({ElementType.METHOD, ElementType.FIELD, ElementType.ANNOTATION_TYPE, ElementType.CONSTRUCTOR, ElementType.PARAMETER, ElementType.TYPE_USE})
     @Retention(RetentionPolicy.RUNTIME)
     @Documented
     @interface List {
-
         InEnum[] value();
-
     }
 }

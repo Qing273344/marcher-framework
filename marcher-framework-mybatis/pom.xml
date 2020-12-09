@@ -11,14 +11,12 @@
 
     <artifactId>marcher-framework-mybatis</artifactId>
     <packaging>jar</packaging>
-    <version>1.0.0</version>
+    <version>${marcher-framework-mybatis.version}</version>
 
 
     <properties>
-        <marcher.framework.util>1.0.0</marcher.framework.util>
-
         <mybatis.version>3.5.2</mybatis.version>
-        <mybatis.plus.version>3.3.1</mybatis.plus.version>
+        <mybatis.plus.version>3.3.2</mybatis.plus.version>
         <druid.version>1.1.10</druid.version>
     </properties>
 
@@ -26,9 +24,7 @@
     <dependencies>
         <dependency>
             <groupId>xin.marcher</groupId>
-            <artifactId>marcher-framework-util</artifactId>
-            <version>${marcher.framework.util}</version>
-            <scope>provided</scope>
+            <artifactId>marcher-framework-common</artifactId>
         </dependency>
 
         <!-- mybatis-plus插件 增强mybatis功能 -->

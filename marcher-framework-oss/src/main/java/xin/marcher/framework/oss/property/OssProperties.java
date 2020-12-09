@@ -3,7 +3,7 @@ package xin.marcher.framework.oss.property;
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
-import xin.marcher.framework.util.EmptyUtil;
+import xin.marcher.framework.common.util.EmptyUtil;
 
 /**
  * 存储配置

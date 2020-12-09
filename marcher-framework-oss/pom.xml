@@ -10,10 +10,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>marcher-framework-oss</artifactId>
+    <packaging>jar</packaging>
+    <version>${marcher-framework-oss.version}</version>
 
 
     <properties>
-        <marcher.framework.util>1.0.0</marcher.framework.util>
         <aliyun.oss.version>2.8.3</aliyun.oss.version>
     </properties>
 
@@ -21,9 +22,7 @@
     <dependencies>
         <dependency>
             <groupId>xin.marcher</groupId>
-            <artifactId>marcher-framework-util</artifactId>
-            <version>${marcher.framework.util}</version>
-            <scope>provided</scope>
+            <artifactId>marcher-framework-common</artifactId>
         </dependency>
 
         <dependency>

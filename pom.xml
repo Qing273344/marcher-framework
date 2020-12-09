@@ -11,19 +11,21 @@
 
 
     <modules>
-        <module>marcher-framework-util</module>
+        <module>marcher-framework-common</module>
         <module>marcher-framework-swagger</module>
-        <module>marcher-framework-generator</module>
         <module>marcher-framework-excel</module>
+        <module>marcher-framework-generator</module>
+        <module>marcher-framework-log</module>
         <module>marcher-framework-mq</module>
         <module>marcher-framework-mvc</module>
         <module>marcher-framework-mybatis</module>
         <module>marcher-framework-oss</module>
         <module>marcher-framework-redis</module>
         <module>marcher-framework-z</module>
-        <module>marcher-framework-log</module>
         <module>marcher-framework-crypto</module>
+
         <module>marcher-service-oss</module>
+        <module>marcher-service-sso</module>
     </modules>
 
 
@@ -35,6 +37,18 @@
 
 
     <properties>
+        <marcher-framework-common.version>1.0.0</marcher-framework-common.version>
+        <marcher-framework-crypto.version>1.0.0</marcher-framework-crypto.version>
+        <marcher-framework-excel.version>1.0.0</marcher-framework-excel.version>
+        <marcher-framework-generator.version>1.0.0</marcher-framework-generator.version>
+        <marcher-framework-log.version>1.0.0</marcher-framework-log.version>
+        <marcher-framework-rabbit.version>1.0.0</marcher-framework-rabbit.version>
+        <marcher-framework-mvc.version>1.0.0</marcher-framework-mvc.version>
+        <marcher-framework-mybatis.version>1.0.0</marcher-framework-mybatis.version>
+        <marcher-framework-oss.version>1.0.0</marcher-framework-oss.version>
+        <marcher-framework-redis.version>1.0.0</marcher-framework-redis.version>
+        <marcher-framework-swagger.version>1.0.0</marcher-framework-swagger.version>
+
         <spring.boot.version>2.2.5.RELEASE</spring.boot.version>
 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -42,6 +56,19 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
+
+
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>xin.marcher</groupId>
+                <artifactId>marcher-framework-common</artifactId>
+                <version>${marcher-framework-common.version}</version>
+                <scope>provided</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
 
     <dependencies>

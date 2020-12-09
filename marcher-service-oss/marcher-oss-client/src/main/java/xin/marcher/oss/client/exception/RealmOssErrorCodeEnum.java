@@ -1,6 +1,6 @@
 package xin.marcher.oss.client.exception;
 
-import xin.marcher.framework.core.IEnumNorm;
+import xin.marcher.framework.common.core.IEnumNorm;
 
 /**
  * OSS系统，使用 1-990-990-000 段

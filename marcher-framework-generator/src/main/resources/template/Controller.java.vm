@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import ${package}.${moduleName}.service.${className}Service;
 
-import static xin.marcher.framework.mvc.response.BaseResult.success;
+import static BaseResult.success;
 
 /**
  * ${comments}

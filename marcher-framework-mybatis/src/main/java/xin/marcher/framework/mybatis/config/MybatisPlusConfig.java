@@ -1,9 +1,12 @@
 package xin.marcher.framework.mybatis.config;
 
+import com.baomidou.mybatisplus.core.injector.ISqlInjector;
 import com.baomidou.mybatisplus.extension.plugins.OptimisticLockerInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.PaginationInterceptor;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import xin.marcher.framework.mybatis.injector.CustomSqlInject;
 
 /**
  * mybatis-plus配置
@@ -28,6 +31,17 @@ public class MybatisPlusConfig {
 //    public IKeyGenerator keyGenerator(){
 //        return new H2KeyGenerator();
 //    }
+
+    /**
+     * 自定义方法扩展注入器
+     *
+     * @return ISqlInjector CustomSqlInject
+     */
+    @Bean
+    @ConditionalOnMissingBean(ISqlInjector.class)
+    public ISqlInjector sqlInjector(){
+        return new CustomSqlInject();
+    }
 
     /**
      * 乐观锁插件

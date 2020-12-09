@@ -11,6 +11,8 @@
 
     <artifactId>marcher-framework-mq</artifactId>
     <packaging>pom</packaging>
+
+
     <modules>
         <module>marcher-framework-mns</module>
         <module>marcher-framework-rabbit</module>

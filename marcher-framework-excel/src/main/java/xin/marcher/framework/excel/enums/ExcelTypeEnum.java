@@ -2,7 +2,7 @@ package xin.marcher.framework.excel.enums;
 
 import com.alibaba.excel.exception.ExcelCommonException;
 import org.apache.poi.poifs.filesystem.FileMagic;
-import xin.marcher.framework.exception.UtilException;
+import xin.marcher.framework.common.exception.UtilException;
 
 import java.io.BufferedInputStream;
 import java.io.InputStream;

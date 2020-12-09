@@ -20,7 +20,7 @@
 
 
     <properties>
-        <marcher.util.version>1.0.0</marcher.util.version>
+        <marcher-framework-common.version>1.0.0</marcher-framework-common.version>
         <marcher.oss.version>1.0.0</marcher.oss.version>
         <marcher.crypto.version>1.0.0</marcher.crypto.version>
 
@@ -33,8 +33,8 @@
     <dependencies>
         <dependency>
             <groupId>xin.marcher</groupId>
-            <artifactId>marcher-framework-util</artifactId>
-            <version>${marcher.util.version}</version>
+            <artifactId>marcher-framework-common</artifactId>
+            <version>${marcher-framework-common.version}</version>
         </dependency>
     </dependencies>
 

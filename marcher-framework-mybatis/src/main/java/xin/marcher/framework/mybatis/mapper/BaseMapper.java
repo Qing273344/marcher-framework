@@ -3,8 +3,11 @@ package xin.marcher.framework.mybatis.mapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import xin.marcher.framework.mvc.request.PageParam;
-import xin.marcher.framework.wrapper.PageWO;
+import org.apache.ibatis.annotations.Param;
+import xin.marcher.framework.common.mvc.request.PageParam;
+import xin.marcher.framework.common.wrapper.PageWO;
+
+import java.util.Collection;
 
 /**
  * 拓展 MyBatis Plus BaseMapper类
@@ -12,6 +15,14 @@ import xin.marcher.framework.wrapper.PageWO;
  * @author marcher
  */
 public interface BaseMapper<T> extends com.baomidou.mybatisplus.core.mapper.BaseMapper<T> {
+
+    /**
+     * 批量插入
+     *
+     * @param collection 批量插入数据
+     * @return int
+     */
+    int insertByBatch(@Param("collection") Collection<T> collection);
 
     /**
      * 根据 entity 条件，查询一条记录

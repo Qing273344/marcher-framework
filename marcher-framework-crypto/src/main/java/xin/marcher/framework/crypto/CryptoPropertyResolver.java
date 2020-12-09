@@ -5,8 +5,8 @@ import com.ulisesbocchio.jasyptspringboot.EncryptablePropertyResolver;
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
-import xin.marcher.framework.exception.UtilException;
-import xin.marcher.framework.util.EmptyUtil;
+import xin.marcher.framework.common.exception.UtilException;
+import xin.marcher.framework.common.util.EmptyUtil;
 
 import javax.annotation.PostConstruct;
 

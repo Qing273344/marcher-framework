@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import xin.marcher.framework.oss.property.OssProperties;
-import xin.marcher.framework.tuple.Tuple2;
+import xin.marcher.framework.common.tuple.Tuple2;
 import xin.marcher.oss.client.api.OssApi;
 import xin.marcher.oss.client.model.request.MoveReqs;
 import xin.marcher.oss.client.model.request.UploadReqs;

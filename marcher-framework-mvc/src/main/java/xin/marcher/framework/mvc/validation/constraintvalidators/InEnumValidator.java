@@ -1,6 +1,6 @@
 package xin.marcher.framework.mvc.validation.constraintvalidators;
 
-import xin.marcher.framework.core.IEnumCodeWithIntro;
+import xin.marcher.framework.common.core.IEnumCodeWithIntro;
 import xin.marcher.framework.mvc.validation.constraints.InEnum;
 
 import javax.validation.ConstraintValidator;
@@ -41,6 +41,10 @@ public class InEnumValidator implements ConstraintValidator<InEnum, Integer> {
 
     @Override
     public boolean isValid(Integer value, ConstraintValidatorContext context) {
+        if (value == null) {
+            return true;
+        }
+
         // 校验通过
         if (values.contains(value)) {
             return true;

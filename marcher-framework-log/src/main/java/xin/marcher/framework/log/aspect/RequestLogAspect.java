@@ -11,9 +11,9 @@ import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
-import xin.marcher.framework.constants.GlobalConstant;
+import xin.marcher.framework.common.constants.GlobalConstant;
 import xin.marcher.framework.log.annotation.RequestLog;
-import xin.marcher.framework.util.HttpContextUtil;
+import xin.marcher.framework.common.util.HttpContextUtil;
 
 import java.lang.reflect.Method;
 import java.util.Arrays;

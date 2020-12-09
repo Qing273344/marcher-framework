@@ -3,7 +3,7 @@ package xin.marcher.framework.mvc.stream;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.util.StreamUtils;
 import xin.marcher.framework.mvc.utils.StreamConvert;
-import xin.marcher.framework.util.EmptyUtil;
+import xin.marcher.framework.common.util.EmptyUtil;
 
 import javax.servlet.ReadListener;
 import javax.servlet.ServletInputStream;

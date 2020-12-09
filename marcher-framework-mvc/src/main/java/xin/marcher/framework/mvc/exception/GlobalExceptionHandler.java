@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.NoHandlerFoundException;
-import xin.marcher.framework.exception.BusinessException;
-import xin.marcher.framework.mvc.response.BaseResult;
-import xin.marcher.framework.util.HttpContextUtil;
+import xin.marcher.framework.common.exception.BusinessException;
+import xin.marcher.framework.common.mvc.response.BaseResult;
+import xin.marcher.framework.common.util.HttpContextUtil;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;

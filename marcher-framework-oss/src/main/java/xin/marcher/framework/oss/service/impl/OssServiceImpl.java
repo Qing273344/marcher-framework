@@ -4,13 +4,13 @@ import com.aliyun.oss.ClientException;
 import com.aliyun.oss.OSSException;
 import com.aliyun.oss.model.PolicyConditions;
 import com.aliyun.oss.model.PutObjectResult;
-import xin.marcher.framework.exception.UtilException;
+import xin.marcher.framework.common.exception.UtilException;
 import xin.marcher.framework.oss.OssProvider;
 import xin.marcher.framework.oss.property.OssProperties;
 import xin.marcher.framework.oss.service.OssService;
-import xin.marcher.framework.util.EmptyUtil;
-import xin.marcher.framework.util.FileUtil;
-import xin.marcher.framework.util.UrlPathUtil;
+import xin.marcher.framework.common.util.EmptyUtil;
+import xin.marcher.framework.common.util.FileUtil;
+import xin.marcher.framework.common.util.UrlPathUtil;
 
 import java.io.File;
 import java.util.Date;

@@ -8,10 +8,10 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import xin.marcher.framework.constants.GlobalConstant;
-import xin.marcher.framework.mvc.response.BaseResult;
-import xin.marcher.framework.util.EmptyUtil;
-import xin.marcher.framework.util.ObjectUtil;
+import xin.marcher.framework.common.constants.GlobalConstant;
+import xin.marcher.framework.common.mvc.response.BaseResult;
+import xin.marcher.framework.common.util.EmptyUtil;
+import xin.marcher.framework.common.util.ObjectUtil;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Map;

@@ -1,6 +1,6 @@
 package xin.marcher.framework.oss;
 
-import xin.marcher.framework.core.IEnumNorm;
+import xin.marcher.framework.common.core.IEnumNorm;
 
 /**
  * oss 地域节点类型
