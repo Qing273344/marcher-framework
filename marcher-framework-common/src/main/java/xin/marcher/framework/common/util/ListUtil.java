@@ -35,7 +35,7 @@ public class ListUtil {
 
     /**
      * 通过指定的分割符进行分割
-     * TODO 暂时只支持int, long, String，有待支持所有类型
+     * TODO 暂时只支持 int, long, String，有待支持所有类型
      *
      * @param splitStr  需要分割的字符串
      * @param delimiter 分割符

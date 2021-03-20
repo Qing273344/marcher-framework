@@ -42,15 +42,15 @@ public class CollectionUtil {
     }
 
     public static <T, K, V> Map<K, V> convertMap(List<T> from, Function<T, K> keyFunc, Function<T, V> valueFunc) {
-        return from.stream().collect(Collectors.toMap(keyFunc, valueFunc));
+        return from.stream().filter(EmptyUtil::isNotEmpty).collect(Collectors.toMap(keyFunc, valueFunc));
     }
 
     public static <T, K> Map<K, T> convertMap(List<T> from, Function<T, K> keyFunc) {
-        return from.stream().collect(Collectors.toMap(keyFunc, item -> item));
+        return from.stream().filter(EmptyUtil::isNotEmpty).collect(Collectors.toMap(keyFunc, item -> item));
     }
 
     public static <T, K> Map<K, Long> countMap(List<T> from, Function<T, K> keyFunc) {
-        return from.stream().collect(Collectors.groupingBy(keyFunc, Collectors.counting()));
+        return from.stream().filter(EmptyUtil::isNotEmpty).collect(Collectors.groupingBy(keyFunc, Collectors.counting()));
     }
 
     /**

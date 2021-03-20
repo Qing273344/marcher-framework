@@ -1,6 +1,7 @@
 package xin.marcher.framework.common.mvc.response;
 
 import com.alibaba.fastjson.annotation.JSONField;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.ToString;
 import xin.marcher.framework.common.constants.GlobalCodeEnum;
@@ -79,25 +80,24 @@ public final class BaseResult<T> implements Serializable {
         return new BaseResult<>(null, code, msg);
     }
 
-    // 避免序列化
     @JSONField(serialize = false)
-    public boolean isSuccess() {
+    public boolean hasSuccess() {
         return this.code == GlobalCodeEnum.OK.getRealCode();
     }
 
     @JSONField(serialize = false)
-    public boolean isSuccessData() {
-        return isSuccess() && EmptyUtil.isNotEmpty(this.data);
+    public boolean hasSuccessData() {
+        return hasSuccess() && EmptyUtil.isNotEmpty(this.data);
     }
 
     @JSONField(serialize = false)
-    public boolean isFail() {
-        return !isSuccess();
+    public boolean hasFail() {
+        return !hasSuccess();
     }
 
 
     public void checkError() throws BusinessException {
-        if (isSuccess()) {
+        if (hasSuccess()) {
             return;
         }
         // 业务异常

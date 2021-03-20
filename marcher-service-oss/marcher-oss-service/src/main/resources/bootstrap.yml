@@ -1,0 +1,8 @@
+server:
+  port: 7027
+
+spring:
+  application:
+    name: marcher-service-oss
+  profiles:
+    active: dev

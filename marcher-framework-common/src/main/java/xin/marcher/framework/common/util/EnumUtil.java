@@ -4,6 +4,8 @@ import xin.marcher.framework.common.core.IEnumNorm;
 import xin.marcher.framework.common.wrapper.CodeNameWO;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -39,6 +41,39 @@ public class EnumUtil {
         return null;
     }
 
+    public static <T extends IEnumNorm> Integer getCode(Class<T> clazz, String desc) {
+        if (EmptyUtil.isEmptyTrim(desc) || !isEnum(clazz)) {
+            return null;
+        }
+
+        if (clazz.getEnumConstants().length <= 0) {
+            return null;
+        }
+
+        for (T ele : clazz.getEnumConstants()) {
+            if (desc.equals(ele.getRealDesc())) {
+                return ele.getRealCode();
+            }
+        }
+        return null;
+    }
+
+    public static <T extends IEnumNorm> List<Integer> getCodes(Class<T> clazz) {
+        if (!isEnum(clazz)) {
+            return Collections.emptyList();
+        }
+
+        if (clazz.getEnumConstants().length <= 0) {
+            return Collections.emptyList();
+        }
+
+        List<Integer> codeList = new ArrayList<>();
+        for (T ele : clazz.getEnumConstants()) {
+            codeList.add(ele.getRealCode());
+        }
+        return codeList;
+    }
+
     public static <T extends IEnumNorm> String getDesc(Integer code, Class<T> clazz) {
         if (code == null || !isEnum(clazz)) {
             return "";
@@ -55,6 +90,34 @@ public class EnumUtil {
         }
 
         return "";
+    }
+
+    public static <T extends IEnumNorm> String getDescs(Class<T> clazz, String delimiter, Integer... codes) {
+        if (EmptyUtil.isEmpty(codes)) {
+            return "";
+        }
+
+        List<String> descList = new ArrayList<>();
+        for (Integer code : codes) {
+            String desc = getDesc(code, clazz);
+            descList.add(desc);
+        }
+
+        return ListUtil.list2Str(descList, delimiter);
+    }
+
+    public static <T extends IEnumNorm> String getDescs(Class<T> clazz, String delimiter, List<Integer> codes) {
+        if (EmptyUtil.isEmpty(codes)) {
+            return "";
+        }
+
+        List<String> descList = new ArrayList<>();
+        for (Integer code : codes) {
+            String desc = getDesc(code, clazz);
+            descList.add(desc);
+        }
+
+        return ListUtil.list2Str(descList, delimiter);
     }
 
     /**
@@ -154,7 +217,31 @@ public class EnumUtil {
         List<CodeNameWO> list = new ArrayList<>();
         for (IEnumNorm iEnumNorm : enumList) {
             CodeNameWO codeNameWo = new CodeNameWO();
-            codeNameWo.setCode(iEnumNorm.getRealCode());;
+            codeNameWo.setCode(iEnumNorm.getRealCode());
+            codeNameWo.setName(iEnumNorm.getRealDesc());
+            list.add(codeNameWo);
+        }
+        return list;
+    }
+
+    /**
+     * 获取枚举类所有值 code name 组合
+     *
+     * @param clazz 枚举 class
+     * @param <T>   T
+     * @return  result
+     */
+    public static <T> List<CodeNameWO> getList(Class<T> clazz, Collection<Integer> codes) {
+        List<IEnumNorm> enumList = getEnumList(clazz);
+
+        List<CodeNameWO> list = new ArrayList<>();
+        for (IEnumNorm iEnumNorm : enumList) {
+            if (!codes.contains(iEnumNorm.getRealCode())) {
+                continue;
+            }
+
+            CodeNameWO codeNameWo = new CodeNameWO();
+            codeNameWo.setCode(iEnumNorm.getRealCode());
             codeNameWo.setName(iEnumNorm.getRealDesc());
             list.add(codeNameWo);
         }
