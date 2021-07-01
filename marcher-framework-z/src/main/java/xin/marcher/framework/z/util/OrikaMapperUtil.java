@@ -6,8 +6,6 @@ import ma.glasnost.orika.MapperFactory;
 import ma.glasnost.orika.converter.builtin.DateToStringConverter;
 import ma.glasnost.orika.impl.DefaultMapperFactory;
 import ma.glasnost.orika.metadata.ClassMapBuilder;
-import xin.marcher.framework.z.SL;
-import xin.marcher.framework.z.SS;
 
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
@@ -127,16 +125,6 @@ public enum OrikaMapperUtil {
             CACHE_MAPPER_FACADE_MAP.put(mapKey, mapperFacade);
         }
         return mapperFacade;
-    }
-
-    public static void main(String[] args) {
-        SL sl = new SL();
-        sl.setTime(new Date());
-        sl.setName("ss");
-        sl.setNn(1600010648124L);
-
-        SS ss = OrikaMapperUtil.INSTANCE.map(sl, SS.class);
-        System.out.println(ss);
     }
 
 }
