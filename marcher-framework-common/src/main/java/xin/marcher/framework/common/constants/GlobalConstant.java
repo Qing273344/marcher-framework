@@ -27,7 +27,7 @@ public class GlobalConstant {
     public static final String CHAR_CENTRE_LINE = "-";
     public static final String CHAR_IP_SEPARATOR = "\\.";
 
-    /** 业务状态, 用户 Filter 异常拦截返回特定的状态码 */
+    /** 业务状态, 用于 Filter 异常拦截返回特定的状态码 */
     public static final String COOKIE_DOMAIN = "marcher.xin";
 
     public static final String BUSINESS_STATUS = "business.status";
