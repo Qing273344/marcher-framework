@@ -10,6 +10,7 @@ import org.apache.velocity.Template;
 import org.apache.velocity.VelocityContext;
 import org.apache.velocity.app.Velocity;
 import org.springframework.stereotype.Component;
+import xin.marcher.framework.common.util.DateUtil;
 import xin.marcher.framework.generator.entity.ColumnEntity;
 import xin.marcher.framework.generator.entity.TableEntity;
 
@@ -108,7 +109,7 @@ public class GenUtils {
         map.put("package", config.getString("package"));
         map.put("moduleName", config.getString("moduleName"));
         map.put("author", config.getString("author"));
-        map.put("datetime", DateUtils.format(new Date(), DateUtils.DATE_TIME_PATTERN));
+        map.put("datetime", DateUtils.format(new Date(), DateUtils.PATTERN_HYPHEN_TIME));
         VelocityContext context = new VelocityContext(map);
 
         //获取模板列表

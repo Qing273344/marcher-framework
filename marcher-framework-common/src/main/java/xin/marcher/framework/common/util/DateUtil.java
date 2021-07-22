@@ -53,6 +53,10 @@ public class DateUtil {
         return System.currentTimeMillis();
     }
 
+    public static String now(String pattern) {
+        return formatDate(now(), pattern);
+    }
+
     /**
      * 间隔天数
      *

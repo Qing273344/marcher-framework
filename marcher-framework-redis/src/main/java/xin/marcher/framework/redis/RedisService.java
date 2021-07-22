@@ -125,7 +125,7 @@ public final class RedisService {
      *
      * @param key    key
      * @param value  数据
-     * @param expire 过期时间,为null则不设置
+     * @param expire 过期时间,为 null 则不设置
      */
     public void setStr(String key, String value, Long expire) {
         opsValue().set(key, value);
@@ -219,11 +219,11 @@ public final class RedisService {
     }
 
     /**
-     * 获取list缓存的内容
+     * 获取 list 缓存的内容
      *
      * @param key   键
      * @param start 开始
-     * @param end   结束 0 到 -1代表所有值
+     * @param end   结束 0 到 -1 代表所有值
      * @return  list
      */
     public List<Object> lGet(String key, long start, long end) {
@@ -236,10 +236,10 @@ public final class RedisService {
     }
 
     /**
-     * 通过索引 获取list中的值
+     * 通过索引 获取 list 中的值
      *
      * @param key   键
-     * @param index 索引 index>=0时， 0 表头，1 第二个元素，依次类推；index<0时，-1，表尾，-2倒数第二个元素，依次类推
+     * @param index 索引 index >= 0 时， 0 表头，1 第二个元素，依次类推；index < 0 时，-1，表尾，-2 倒数第二个元素，依次类推
      * @return
      */
     public Object lGetIndex(String key, long index) {
@@ -252,7 +252,7 @@ public final class RedisService {
     }
 
     /**
-     * 获取list缓存的长度
+     * 获取 list 缓存的长度
      *
      * @param key 键
      * @return
@@ -267,7 +267,7 @@ public final class RedisService {
     }
 
     /**
-     * 将list放入缓存
+     * 将 list 放入缓存
      *
      * @param key   键
      * @param value 值
@@ -284,7 +284,7 @@ public final class RedisService {
     }
 
     /**
-     * 将list放入缓存
+     * 将 list 放入缓存
      *
      * @param key   键
      * @param value 值
@@ -308,7 +308,7 @@ public final class RedisService {
     }
 
     /**
-     * 根据索引修改list中的某条数据
+     * 根据索引修改 list 中的某条数据
      *
      * @param key   键
      * @param index 索引
@@ -326,7 +326,7 @@ public final class RedisService {
     }
 
     /**
-     * 移除N个值为value
+     * 移除 N 个值为 value
      *
      * @param key   键
      * @param count 移除多少个
@@ -469,6 +469,26 @@ public final class RedisService {
     }
 
     /**
+     * 向一张hash表中放入数据,如果不存在将创建
+     *
+     * @param key   键
+     * @param item  项
+     * @param value 值
+     * @param time  时间(秒) 注意:如果已存在的 hash 表有时间,这里将会替换原有的时间
+     * @return true 成功 false 失败
+     */
+    public boolean hset(String key, String item, Object value, long time) {
+        try {
+            opsHash().put(key, item, value);
+            setExpire(key, time);
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    /**
      * HashSet
      *
      * @param key 键
@@ -487,48 +507,28 @@ public final class RedisService {
     }
 
     /**
-     * 向一张hash表中放入数据,如果不存在将创建
+     * 删除 hash 表中的值
      *
-     * @param key   键
-     * @param item  项
-     * @param value 值
-     * @param time  时间(秒) 注意:如果已存在的hash表有时间,这里将会替换原有的时间
-     * @return true 成功 false失败
-     */
-    public boolean hset(String key, String item, Object value, long time) {
-        try {
-            opsHash().put(key, item, value);
-            setExpire(key, time);
-            return true;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return false;
-        }
-    }
-
-    /**
-     * 删除hash表中的值
-     *
-     * @param key  键 不能为null
-     * @param item 项 可以使多个 不能为null
+     * @param key  键 不能为 null
+     * @param item 项 可以使多个 不能为 null
      */
     public void hdel(String key, Object... item) {
         opsHash().delete(key, item);
     }
 
     /**
-     * 判断hash表中是否有该项的值
+     * 判断 hash 表中是否有该项的值
      *
-     * @param key  键 不能为null
-     * @param item 项 不能为null
-     * @return true 存在 false不存在
+     * @param key  键 不能为 null
+     * @param item 项 不能为 null
+     * @return true 存在 false 不存在
      */
     public boolean hHasKey(String key, String item) {
         return opsHash().hasKey(key, item);
     }
 
     /**
-     * hash递增 如果不存在,就会创建一个 并把新增后的值返回
+     * hash 递增 如果不存在,就会创建一个 并把新增后的值返回
      *
      * @param key  键
      * @param item 项
@@ -540,11 +540,11 @@ public final class RedisService {
     }
 
     /**
-     * hash递减
+     * hash 递减
      *
      * @param key  键
      * @param item 项
-     * @param by   要减少记(小于0)
+     * @param by   要减少几(小于0)
      * @return
      */
     public double hdecr(String key, String item, double by) {
