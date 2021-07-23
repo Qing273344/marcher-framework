@@ -20,4 +20,6 @@ public class Assert extends cn.hutool.core.lang.Assert {
             throw new IllegalArgumentException(msg);
         }
     }
+
+
 }
