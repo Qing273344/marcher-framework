@@ -24,7 +24,7 @@ public class MobileValidator implements ConstraintValidator<Mobile, String> {
         if (required) {
             return RegexUtil.isMobile(value);
         } else {
-            if (EmptyUtil.isEmptyTrim(value)) {
+            if (EmptyUtil.isEmpty(value)) {
                 return true;
             } else {
                 return RegexUtil.isMobile(value);
