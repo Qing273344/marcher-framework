@@ -5,6 +5,7 @@ import xin.marcher.framework.mvc.validation.constraints.InEnum;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
+import javax.validation.constraints.NotNull;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Set;

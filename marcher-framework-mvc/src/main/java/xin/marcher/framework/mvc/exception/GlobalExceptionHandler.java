@@ -1,6 +1,8 @@
 package xin.marcher.framework.mvc.exception;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.core.Ordered;
+import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
@@ -25,7 +27,9 @@ import java.util.Set;
  * @author marcher
  */
 @Slf4j
+@ResponseBody
 @ControllerAdvice
+@Order(value = Ordered.HIGHEST_PRECEDENCE)
 public class GlobalExceptionHandler {
 
     /**
@@ -35,7 +39,6 @@ public class GlobalExceptionHandler {
      * @return 异常提示
      */
     @ExceptionHandler(BusinessException.class)
-    @ResponseBody
     public BaseResult handleServiceException(BusinessException ex) {
         wrapperLog(ex);
         return BaseResult.error(ex.getCode(), ex.getMessage());
@@ -48,7 +51,6 @@ public class GlobalExceptionHandler {
      * @return 异常提示
      */
     @ExceptionHandler(value = {MethodArgumentNotValidException.class, ValidationException.class})
-    @ResponseBody
     public BaseResult handleMethodArgumentNotValidException(Exception ex) {
         wrapperLog(ex);
 
@@ -81,7 +83,6 @@ public class GlobalExceptionHandler {
      * @return 异常提示
      */
     @ExceptionHandler(NoHandlerFoundException.class)
-    @ResponseBody
     public BaseResult handlerNoFoundException(Exception ex) {
         wrapperLog(ex);
 
@@ -95,7 +96,6 @@ public class GlobalExceptionHandler {
      * @return 异常提示
      */
     @ExceptionHandler(Exception.class)
-    @ResponseBody
     public BaseResult handleException(Exception ex) {
         wrapperLog(ex);
         return BaseResult.error();
